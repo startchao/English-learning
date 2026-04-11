@@ -6,66 +6,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>English Dojo</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --gold: #d4a843; --gold-bg: rgba(212,168,67,0.12); --gold-bd: rgba(212,168,67,0.3);
-      --bg: #0b0f14; --surf: rgba(255,255,255,0.04); --bd: rgba(255,255,255,0.09); --txt: #e4dcd0;
+      --gold: #b8860b;
+      --gold-bg: rgba(184,134,11,0.10);
+      --gold-bd: rgba(184,134,11,0.35);
+      --bg: #f5f5f0;
+      --surf: #ffffff;
+      --surf2: #f0ede8;
+      --bd: #ddd9d0;
+      --txt: #1a1a1a;
+      --txt2: #555;
+      --txt3: #888;
     }
-    html,body { height:100%; background:var(--bg); color:var(--txt); font-family:'Outfit',sans-serif; -webkit-tap-highlight-color:transparent; overscroll-behavior:none; }
-    .serif { font-family:'Lora',serif; }
-    #app { max-width:480px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
-    header { position:sticky; top:0; z-index:40; padding:14px 20px; border-bottom:1px solid var(--bd); background:rgba(11,15,20,0.93); backdrop-filter:blur(12px); display:flex; justify-content:space-between; align-items:center; }
-    .h-title { font-size:17px; font-weight:800; color:var(--gold); }
-    .h-sub { font-size:8px; letter-spacing:.35em; opacity:.22; text-transform:uppercase; margin-top:2px; }
-    #btn-set { background:var(--surf); border:1px solid var(--bd); border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer; }
-    main { flex:1; overflow-y:auto; padding-bottom:88px; }
-    nav { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:10px 8px 22px; background:rgba(11,15,20,0.93); border-top:1px solid var(--bd); backdrop-filter:blur(12px); display:flex; justify-content:space-around; z-index:40; }
-    .nb { background:none; border:none; color:var(--txt); display:flex; flex-direction:column; align-items:center; gap:3px; opacity:.22; cursor:pointer; transition:.2s; padding:2px 6px; font-family:inherit; }
-    .nb.on { opacity:1; color:var(--gold); transform:scale(1.12); }
-    .nb span:first-child { font-size:20px; }
-    .nb span:last-child { font-size:8px; letter-spacing:.06em; }
-    .glass { background:var(--surf); border:1px solid var(--bd); border-radius:14px; }
-    .btn-p { width:100%; padding:15px; background:var(--gold); color:#000; font-weight:800; font-size:15px; border:none; border-radius:14px; cursor:pointer; font-family:inherit; transition:opacity .15s; }
-    .btn-p:active { opacity:.8; } .btn-p:disabled { opacity:.5; }
-    .btn-o { width:100%; padding:12px; background:none; border:1px solid var(--gold-bd); color:var(--gold); font-weight:700; font-size:13px; border-radius:12px; cursor:pointer; font-family:inherit; }
-    .btn-g { background:var(--surf); border:1px solid var(--bd); color:var(--txt); padding:11px; border-radius:11px; cursor:pointer; font-family:inherit; font-size:13px; }
-    .btn-g:disabled { opacity:.25; }
-    .spin-wrap { display:flex; justify-content:center; padding:40px; }
-    .spin { width:32px; height:32px; border:2.5px solid var(--gold); border-top-color:transparent; border-radius:50%; animation:sp .8s linear infinite; }
-    @keyframes sp { to { transform:rotate(360deg); } }
-    .err { margin:0 16px; padding:14px 16px; background:rgba(220,38,38,.12); border:1px solid rgba(220,38,38,.3); border-radius:12px; color:#fca5a5; font-size:13px; display:flex; gap:10px; align-items:flex-start; }
-    .err-x { background:none; border:none; color:#fca5a5; font-size:18px; cursor:pointer; margin-left:auto; opacity:.5; font-family:inherit; }
-    select { width:100%; padding:12px 36px 12px 14px; background:var(--bg); color:var(--txt); border:1px solid var(--bd); border-radius:12px; font-family:inherit; font-size:13px; outline:none; appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4a843' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
-    input[type=text],input[type=password] { width:100%; padding:12px 14px; background:rgba(255,255,255,.04); border:1px solid var(--bd); border-radius:12px; color:var(--txt); font-family:inherit; font-size:14px; outline:none; -webkit-appearance:none; }
-    input:focus { border-color:var(--gold); }
-    .lbl { font-size:9px; letter-spacing:.35em; text-transform:uppercase; opacity:.32; margin-bottom:8px; display:block; }
-    .prog-w { height:3px; background:rgba(255,255,255,.08); border-radius:3px; overflow:hidden; flex:1; }
-    .prog-f { height:100%; background:var(--gold); border-radius:3px; transition:width .3s; }
-    .flip-sc { perspective:1000px; height:286px; cursor:pointer; }
-    .flip-in { position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.4,0,.2,1); transform-style:preserve-3d; }
-    .flip-in.on { transform:rotateY(180deg); }
-    .flip-f { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:14px; padding:22px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:var(--surf); border:1px solid var(--bd); }
-    .flip-b { transform:rotateY(180deg); background:var(--gold-bg); border-color:var(--gold-bd); justify-content:flex-start; align-items:flex-start; text-align:left; overflow-y:auto; padding-top:18px; }
-    .opt { width:100%; padding:13px 16px; text-align:left; border-radius:12px; border:1px solid var(--bd); background:none; color:var(--txt); font-family:inherit; font-size:13px; cursor:pointer; line-height:1.4; transition:.15s; }
-    .opt.ok { border-color:#4ade80; background:rgba(74,222,128,.1); }
-    .opt.no { border-color:#f87171; background:rgba(248,113,113,.1); }
-    .opt.sel { border-color:var(--gold); background:var(--gold-bg); }
-    .acc { padding:14px 16px 14px 18px; border-left:4px solid var(--gold); border-radius:0 12px 12px 0; background:rgba(212,168,67,.07); }
-    .sc-b { background:var(--gold-bg); border:1px solid var(--gold-bd); border-radius:12px; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; }
-    .tab { display:none; flex-direction:column; gap:14px; padding:16px; }
-    .tab.on { display:flex; }
-    .hc { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:14px; padding:20px 18px; cursor:pointer; display:flex; align-items:center; gap:14px; transition:.15s; }
-    .hc:active { transform:scale(.98); opacity:.85; }
-    .mtabs { display:flex; gap:8px; }
-    .mt { flex:1; padding:9px 4px; font-size:11px; font-weight:600; border-radius:10px; border:1px solid var(--gold-bd); background:none; color:var(--gold); cursor:pointer; font-family:inherit; }
-    .mt.on { background:var(--gold); color:#000; border-color:var(--gold); }
-    @keyframes fu { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    .fu { animation:fu .28s ease forwards; }
-    #ov { position:fixed; inset:0; z-index:99; background:rgba(0,0,0,.97); display:none; flex-direction:column; justify-content:center; padding:32px 24px; gap:12px; }
-    ::-webkit-scrollbar{width:2px} ::-webkit-scrollbar-thumb{background:var(--gold-bd);border-radius:2px}
+    html, body { height: 100%; background: var(--bg); color: var(--txt); font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+    #app { max-width: 480px; margin: 0 auto; min-height: 100dvh; display: flex; flex-direction: column; }
+
+```
+/* Header */
+header { position: sticky; top: 0; z-index: 40; padding: 14px 20px; border-bottom: 1px solid var(--bd); background: rgba(245,245,240,0.95); backdrop-filter: blur(12px); display: flex; justify-content: space-between; align-items: center; }
+.h-title { font-size: 17px; font-weight: 800; color: var(--gold); }
+.h-sub { font-size: 8px; letter-spacing: .35em; opacity: .4; text-transform: uppercase; margin-top: 2px; }
+#btn-set { background: var(--surf); border: 1px solid var(--bd); border-radius: 50%; width: 36px; height: 36px; font-size: 16px; cursor: pointer; }
+
+main { flex: 1; overflow-y: auto; padding-bottom: 88px; }
+
+/* Nav */
+nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; padding: 10px 8px 22px; background: rgba(245,245,240,0.95); border-top: 1px solid var(--bd); backdrop-filter: blur(12px); display: flex; justify-content: space-around; z-index: 40; }
+.nb { background: none; border: none; color: var(--txt2); display: flex; flex-direction: column; align-items: center; gap: 3px; opacity: .35; cursor: pointer; transition: .2s; padding: 2px 6px; font-family: inherit; }
+.nb.on { opacity: 1; color: var(--gold); transform: scale(1.12); }
+.nb span:first-child { font-size: 20px; }
+.nb span:last-child { font-size: 8px; letter-spacing: .06em; }
+
+/* Card */
+.glass { background: var(--surf); border: 1px solid var(--bd); border-radius: 14px; }
+
+/* Buttons */
+.btn-p { width: 100%; padding: 15px; background: var(--gold); color: #fff; font-weight: 800; font-size: 15px; border: none; border-radius: 14px; cursor: pointer; font-family: inherit; transition: opacity .15s; }
+.btn-p:active { opacity: .8; } .btn-p:disabled { opacity: .4; }
+.btn-o { width: 100%; padding: 12px; background: none; border: 1px solid var(--gold-bd); color: var(--gold); font-weight: 700; font-size: 13px; border-radius: 12px; cursor: pointer; font-family: inherit; }
+.btn-g { background: var(--surf2); border: 1px solid var(--bd); color: var(--txt); padding: 11px; border-radius: 11px; cursor: pointer; font-family: inherit; font-size: 13px; }
+.btn-g:disabled { opacity: .3; }
+
+/* Spinner */
+.spin-wrap { display: flex; justify-content: center; padding: 40px; }
+.spin { width: 32px; height: 32px; border: 2.5px solid var(--gold); border-top-color: transparent; border-radius: 50%; animation: sp .8s linear infinite; }
+@keyframes sp { to { transform: rotate(360deg); } }
+
+/* Error */
+.err { margin: 0 16px; padding: 14px 16px; background: rgba(220,38,38,.08); border: 1px solid rgba(220,38,38,.25); border-radius: 12px; color: #c00; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+.err-x { background: none; border: none; color: #c00; font-size: 18px; cursor: pointer; margin-left: auto; opacity: .5; font-family: inherit; }
+
+/* Inputs */
+select { width: 100%; padding: 12px 36px 12px 14px; background: var(--surf); color: var(--txt); border: 1px solid var(--bd); border-radius: 12px; font-family: inherit; font-size: 13px; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8860b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+input[type=text], input[type=password] { width: 100%; padding: 12px 14px; background: var(--surf); border: 1px solid var(--bd); border-radius: 12px; color: var(--txt); font-family: inherit; font-size: 14px; outline: none; -webkit-appearance: none; }
+input:focus { border-color: var(--gold); }
+
+.lbl { font-size: 9px; letter-spacing: .35em; text-transform: uppercase; opacity: .4; margin-bottom: 8px; display: block; }
+
+/* Progress */
+.prog-w { height: 3px; background: var(--bd); border-radius: 3px; overflow: hidden; flex: 1; }
+.prog-f { height: 100%; background: var(--gold); border-radius: 3px; transition: width .3s; }
+
+/* Flip Card */
+.flip-sc { perspective: 1000px; height: 300px; cursor: pointer; }
+.flip-in { position: relative; width: 100%; height: 100%; transition: transform .55s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+.flip-in.on { transform: rotateY(180deg); }
+.flip-f { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--surf); border: 1px solid var(--bd); }
+.flip-b { transform: rotateY(180deg); background: #fffdf5; border-color: var(--gold-bd); justify-content: flex-start; align-items: flex-start; text-align: left; overflow-y: auto; padding-top: 18px; }
+
+/* Options */
+.opt { width: 100%; padding: 13px 16px; text-align: left; border-radius: 12px; border: 1px solid var(--bd); background: var(--surf); color: var(--txt); font-family: inherit; font-size: 13px; cursor: pointer; line-height: 1.4; transition: .15s; }
+.opt.ok { border-color: #2a8a4a; background: rgba(42,138,74,.08); color: #1a5c30; }
+.opt.no { border-color: #c0392b; background: rgba(192,57,43,.08); color: #8b1a11; }
+
+/* Accent */
+.acc { padding: 14px 16px 14px 18px; border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; background: var(--gold-bg); }
+
+/* Score */
+.sc-b { background: var(--gold-bg); border: 1px solid var(--gold-bd); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Tabs */
+.tab { display: none; flex-direction: column; gap: 14px; padding: 16px; }
+.tab.on { display: flex; }
+
+/* Home cards */
+.hc { background: var(--surf); border: 1px solid var(--bd); border-left: 4px solid var(--gold); border-radius: 14px; padding: 20px 18px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: .15s; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+.hc:active { transform: scale(.98); opacity: .85; }
+
+/* Mode tabs */
+.mtabs { display: flex; gap: 8px; }
+.mt { flex: 1; padding: 9px 4px; font-size: 11px; font-weight: 600; border-radius: 10px; border: 1px solid var(--gold-bd); background: none; color: var(--gold); cursor: pointer; font-family: inherit; }
+.mt.on { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+@keyframes fu { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.fu { animation: fu .28s ease forwards; }
+
+/* Settings overlay */
+#ov { position: fixed; inset: 0; z-index: 99; background: rgba(245,245,240,0.98); display: none; flex-direction: column; justify-content: center; padding: 32px 24px; gap: 12px; }
+
+/* Section label inside cards */
+.card-lbl { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 6px; display: block; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--bd); border-radius: 3px; }
+```
+
   </style>
 </head>
 <body>
@@ -80,11 +129,11 @@
 <!-- HOME -->
 <div id="tab-home" class="tab on">
   <span class="lbl" style="padding-top:4px">選擇練習模式</span>
-  <div class="hc" onclick="go('vocab')"><span style="font-size:28px">📚</span><div><div style="font-size:17px;font-weight:700">Vocab Drill</div><div style="font-size:11px;opacity:.35;margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
-  <div class="hc" onclick="go('grammar')"><span style="font-size:28px">⚡</span><div><div style="font-size:17px;font-weight:700">Grammar Blast</div><div style="font-size:11px;opacity:.35;margin-top:3px">FLPT 文法主題 · 計分追蹤</div></div></div>
-  <div class="hc" onclick="go('sentence')"><span style="font-size:28px">✍️</span><div><div style="font-size:17px;font-weight:700">Sentence Forge</div><div style="font-size:11px;opacity:.35;margin-top:3px">句型解說 · 範例句 · 填空練習</div></div></div>
-  <div class="hc" onclick="go('article')"><span style="font-size:28px">📰</span><div><div style="font-size:17px;font-weight:700">Article Room</div><div style="font-size:11px;opacity:.35;margin-top:3px">深度文章 · 字彙 · 中譯 · 口譯備忘</div></div></div>
-  <p style="text-align:center;font-size:10px;opacity:.14;padding-bottom:4px">groq · llama-3.3-70b-versatile</p>
+  <div class="hc" onclick="go('vocab')"><span style="font-size:28px">📚</span><div><div style="font-size:17px;font-weight:700">Vocab Drill</div><div style="font-size:11px;color:var(--txt3);margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
+  <div class="hc" onclick="go('grammar')"><span style="font-size:28px">⚡</span><div><div style="font-size:17px;font-weight:700">Grammar Blast</div><div style="font-size:11px;color:var(--txt3);margin-top:3px">FLPT 文法主題 · 計分追蹤</div></div></div>
+  <div class="hc" onclick="go('sentence')"><span style="font-size:28px">✍️</span><div><div style="font-size:17px;font-weight:700">Sentence Forge</div><div style="font-size:11px;color:var(--txt3);margin-top:3px">句型解說 · 範例句 · 填空練習</div></div></div>
+  <div class="hc" onclick="go('article')"><span style="font-size:28px">📰</span><div><div style="font-size:17px;font-weight:700">Article Room</div><div style="font-size:11px;color:var(--txt3);margin-top:3px">深度文章 · 字彙 · 中譯 · 口譯備忘</div></div></div>
+  <p style="text-align:center;font-size:10px;color:var(--txt3);padding-bottom:4px">groq · llama-3.3-70b-versatile</p>
 </div>
 
 <!-- VOCAB -->
@@ -99,48 +148,55 @@
   <div id="vcont" style="display:none;flex-direction:column;gap:12px">
     <div style="display:flex;align-items:center;gap:10px">
       <div class="prog-w"><div class="prog-f" id="vprog" style="width:20%"></div></div>
-      <span id="vidx" style="font-size:11px;opacity:.35">1/5</span>
+      <span id="vidx" style="font-size:11px;color:var(--txt3)">1/5</span>
     </div>
+    <!-- flip -->
     <div id="vflip">
       <div class="flip-sc" onclick="doFlip()">
         <div class="flip-in" id="fin">
+          <!-- Front -->
           <div class="flip-f">
-            <p id="fpos" style="font-size:10px;opacity:.28;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px"></p>
-            <h2 id="fword" style="font-size:44px;font-weight:800;color:var(--gold);letter-spacing:-1px"></h2>
-            <p id="fzh" style="font-size:22px;margin-top:16px;opacity:.8"></p>
-            <p style="font-size:10px;opacity:.18;margin-top:20px">點擊查看定義</p>
+            <p id="fpos" style="font-size:10px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px"></p>
+            <h2 id="fword" style="font-size:42px;font-weight:800;color:var(--gold);letter-spacing:-1px"></h2>
+            <p id="fzh" style="font-size:20px;font-weight:600;margin-top:12px;color:var(--txt)"></p>
+            <p style="font-size:10px;color:var(--txt3);margin-top:20px">點擊查看定義</p>
           </div>
+          <!-- Back -->
           <div class="flip-f flip-b">
-            <p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px">Definition</p>
-            <p id="fdef" class="serif" style="font-size:14px;line-height:1.8;margin-bottom:14px"></p>
-            <p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px">Example</p>
-            <p id="fex" class="serif" style="font-size:13px;line-height:1.7;font-style:italic;opacity:.75;margin-bottom:14px"></p>
-            <p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px">記憶法</p>
-            <p id="ftip" style="font-size:11px;opacity:.55;line-height:1.6"></p>
+            <span class="card-lbl">中文釋義</span>
+            <p id="bfzh" style="font-size:18px;font-weight:700;color:var(--txt);margin-bottom:14px"></p>
+            <span class="card-lbl">English Definition</span>
+            <p id="fdef" style="font-size:13px;line-height:1.8;margin-bottom:14px;color:var(--txt)"></p>
+            <span class="card-lbl">Example</span>
+            <p id="fex" style="font-size:13px;line-height:1.7;font-style:normal;color:var(--txt2);margin-bottom:14px"></p>
+            <span class="card-lbl">記憶技巧</span>
+            <p id="ftip" style="font-size:12px;color:var(--txt2);line-height:1.6"></p>
           </div>
         </div>
       </div>
     </div>
+    <!-- mcq -->
     <div id="vmcq" style="display:none">
       <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
         <p class="lbl">選出正確單字</p>
-        <p id="mblank" class="serif" style="font-size:15px;line-height:1.9"></p>
+        <p id="mblank" style="font-size:15px;line-height:1.9;color:var(--txt)"></p>
         <div id="mopts" style="display:flex;flex-direction:column;gap:8px"></div>
         <div id="mexp" style="display:none" class="acc fu">
           <p id="mres" style="font-weight:700;color:var(--gold);margin-bottom:6px"></p>
-          <p id="mdef" class="serif" style="font-size:12px;opacity:.7;line-height:1.6"></p>
+          <p id="mdef" style="font-size:12px;color:var(--txt2);line-height:1.6"></p>
         </div>
       </div>
     </div>
+    <!-- fill -->
     <div id="vfill" style="display:none">
       <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
         <p class="lbl">填入正確單字</p>
         <div>
-          <p style="font-size:10px;opacity:.38;margin-bottom:4px">定義：</p>
-          <p id="filldef" class="serif" style="font-size:13px;opacity:.75;line-height:1.6"></p>
-          <p id="fillzh" style="font-size:11px;opacity:.32;margin-top:6px"></p>
+          <p style="font-size:10px;color:var(--txt3);margin-bottom:4px">定義：</p>
+          <p id="filldef" style="font-size:13px;color:var(--txt2);line-height:1.6"></p>
+          <p id="fillzh" style="font-size:12px;color:var(--txt3);margin-top:5px"></p>
         </div>
-        <p id="fillblank" class="serif" style="font-size:15px;line-height:1.9"></p>
+        <p id="fillblank" style="font-size:15px;line-height:1.9;color:var(--txt)"></p>
         <input type="text" id="fillinp" placeholder="輸入答案…">
         <div style="display:flex;gap:10px">
           <button class="btn-g" style="flex:1" onclick="fillShow()">顯示答案</button>
@@ -148,7 +204,7 @@
         </div>
         <div id="fillres" style="display:none" class="acc fu">
           <p id="fillrt" style="font-weight:700;color:var(--gold);margin-bottom:6px"></p>
-          <p id="fillex" class="serif" style="font-size:12px;font-style:italic;opacity:.6"></p>
+          <p id="fillex" style="font-size:12px;color:var(--txt2)"></p>
         </div>
       </div>
     </div>
@@ -178,9 +234,9 @@
     </select>
   </div>
   <div id="gsc" style="display:none" class="sc-b">
-    <span style="font-size:11px;opacity:.45">本輪得分</span>
+    <span style="font-size:11px;color:var(--txt2)">本輪得分</span>
     <span id="gsct" style="font-size:20px;font-weight:800;color:var(--gold)">0/0</span>
-    <span id="gpct" style="font-size:11px;opacity:.45">0%</span>
+    <span id="gpct" style="font-size:11px;color:var(--txt2)">0%</span>
   </div>
   <button class="btn-p" id="gbtn" onclick="genGrammar()">⚡ 開始文法挑戰</button>
   <div id="gerr"></div>
@@ -188,21 +244,21 @@
     <div style="padding:28px 20px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
       <p id="gdicon" style="font-size:48px"></p>
       <p id="gdsco" style="font-size:28px;font-weight:800;color:var(--gold)"></p>
-      <p id="gdmsg" style="opacity:.55;font-size:13px"></p>
+      <p id="gdmsg" style="color:var(--txt2);font-size:13px"></p>
       <button class="btn-o" style="margin-top:8px" onclick="gReset()">再試一輪</button>
     </div>
   </div>
   <div id="gq" style="display:none" class="glass fu">
     <div style="padding:18px;display:flex;flex-direction:column;gap:14px">
       <div style="display:flex;justify-content:space-between">
-        <span id="gtlbl" style="font-size:9px;opacity:.28;letter-spacing:.3em;text-transform:uppercase"></span>
-        <span id="gqidx" style="font-size:11px;opacity:.3"></span>
+        <span id="gtlbl" style="font-size:9px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase"></span>
+        <span id="gqidx" style="font-size:11px;color:var(--txt3)"></span>
       </div>
-      <p id="gqtxt" class="serif" style="font-size:16px;line-height:1.9"></p>
+      <p id="gqtxt" style="font-size:16px;line-height:1.9;color:var(--txt)"></p>
       <div id="gopts" style="display:flex;flex-direction:column;gap:8px"></div>
       <div id="gexp" style="display:none" class="acc fu">
         <p id="gres" style="font-weight:700;color:var(--gold);margin-bottom:8px"></p>
-        <p id="gexpt" style="font-size:13px;opacity:.75;line-height:1.7"></p>
+        <p id="gexpt" style="font-size:13px;color:var(--txt2);line-height:1.7"></p>
       </div>
       <button id="gnxt" style="display:none" class="btn-o" onclick="gNext()">下一題 →</button>
     </div>
@@ -236,15 +292,31 @@
   <div>
     <span class="lbl">選擇文章主題</span>
     <select id="atopic">
-      <option value="a current military technology or geopolitics topic">🎲 隨機主題</option>
-      <option value="C4ISR systems in modern warfare">C4ISR 系統</option>
-      <option value="Foreign Military Sales FMS program and defense acquisition">FMS 軍售</option>
-      <option value="U.S. Indo-Pacific Command strategy and regional security">INDOPACOM 戰略</option>
-      <option value="drone warfare tactics and counter-UAS technology">無人機戰術</option>
-      <option value="semiconductor supply chain and national security">半導體與安全</option>
-      <option value="artificial intelligence applications in military and defense">AI 軍事應用</option>
-      <option value="cyber warfare and information operations">網路戰</option>
-      <option value="Taiwan Strait security and cross-strait military balance">臺海安全</option>
+      <option value="any current affairs or academic topic suitable for B2-C1 English reading exams">🎲 隨機主題</option>
+      <optgroup label="🌏 國際與政治">
+        <option value="C4ISR systems and modern military communication networks">C4ISR 系統</option>
+        <option value="Foreign Military Sales FMS program and defense acquisition">FMS 軍售</option>
+        <option value="U.S. Indo-Pacific Command strategy and regional security">INDOPACOM 戰略</option>
+        <option value="Taiwan Strait security and cross-strait military balance">臺海安全</option>
+        <option value="United Nations reform and global governance challenges">聯合國改革</option>
+        <option value="international human rights law and humanitarian intervention">人權與人道干預</option>
+      </optgroup>
+      <optgroup label="💡 科技與經濟">
+        <option value="artificial intelligence ethics and societal impact">AI 倫理與社會影響</option>
+        <option value="semiconductor supply chain and national security">半導體與安全</option>
+        <option value="drone warfare tactics and counter-UAS technology">無人機戰術</option>
+        <option value="cybersecurity threats and information warfare">網路戰與資安</option>
+        <option value="global supply chain disruption and economic resilience">供應鏈中斷與經濟韌性</option>
+        <option value="digital currency central bank digital currency CBDC and financial regulation">數位貨幣與金融監管</option>
+      </optgroup>
+      <optgroup label="🌱 環境與社會">
+        <option value="climate change policy and international cooperation">氣候變遷政策</option>
+        <option value="global public health challenges after COVID-19 and pandemic preparedness">公共衛生與疫情防備</option>
+        <option value="immigration policy and social integration challenges in developed countries">移民政策與社會融合</option>
+        <option value="education reform and the future of work in the digital age">教育改革與未來職場</option>
+        <option value="energy transition from fossil fuels to renewable energy">能源轉型</option>
+        <option value="urbanization megacities and sustainable development">都市化與永續發展</option>
+      </optgroup>
     </select>
   </div>
   <button class="btn-p" id="abtn" onclick="genArt()">📰 生成深度文章</button>
@@ -267,17 +339,18 @@
 
 <div id="ov">
   <h2 style="font-size:22px;font-weight:800;color:var(--gold)">⚙️ 設定</h2>
-  <p style="font-size:11px;opacity:.32">模型：llama-3.3-70b-versatile（Groq）</p>
-  <p style="font-size:11px;opacity:.22;margin-bottom:8px">前往 console.groq.com → API Keys → 取得免費 Key</p>
+  <p style="font-size:11px;color:var(--txt2)">模型：llama-3.3-70b-versatile（Groq）</p>
+  <p style="font-size:11px;color:var(--txt3);margin-bottom:8px">前往 console.groq.com → API Keys → 取得免費 Key</p>
   <input type="password" id="kinp" placeholder="貼上 Groq API Key…">
   <button class="btn-p" style="margin-top:10px" onclick="saveSets()">✅ 儲存</button>
-  <button onclick="hardReset()" style="width:100%;padding:12px;background:none;border:1px solid rgba(220,38,38,.4);color:#f87171;border-radius:12px;font-family:inherit;font-size:13px;cursor:pointer">♻️ 清除快取並重設</button>
-  <button onclick="closeOv()" style="background:none;border:none;color:var(--txt);opacity:.22;font-size:12px;cursor:pointer;padding:8px;font-family:inherit">返回 Dojo</button>
+  <button onclick="hardReset()" style="width:100%;padding:12px;background:none;border:1px solid rgba(192,57,43,.4);color:#c0392b;border-radius:12px;font-family:inherit;font-size:13px;cursor:pointer">♻️ 清除快取並重設</button>
+  <button onclick="closeOv()" style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;padding:8px;font-family:inherit">返回 Dojo</button>
 </div>
 
 <script>
 const MDL = "llama-3.3-70b-versatile";
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+const ZH_RULE = "IMPORTANT: All Chinese text must be in Traditional Chinese (繁體中文). Do NOT use Simplified Chinese. Return ONLY valid JSON with no markdown or code fences.";
 
 // ── API ────────────────────────────────────────────────
 async function api(prompt, sys) {
@@ -285,16 +358,13 @@ async function api(prompt, sys) {
   if (!k) throw new Error("請先點擊 ⚙️ 設定 API Key");
   const r = await fetch(GROQ_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${k}`
-    },
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${k}` },
     body: JSON.stringify({
       model: MDL,
-      temperature: 0.9,
+      temperature: 0.85,
       response_format: { type: "json_object" },
       messages: [
-        { role: "system", content: sys + "\nIMPORTANT: Return ONLY valid JSON. No markdown, no code fences, no extra text." },
+        { role: "system", content: sys + "\n" + ZH_RULE },
         { role: "user", content: prompt }
       ]
     })
@@ -305,11 +375,8 @@ async function api(prompt, sys) {
   }
   const d = await r.json();
   const raw = d?.choices?.[0]?.message?.content || "";
-  try {
-    return JSON.parse(raw.replace(/^```json\s*/i, '').replace(/```\s*$/, '').trim());
-  } catch {
-    throw new Error("JSON 解析失敗，請重試");
-  }
+  try { return JSON.parse(raw.replace(/^```json\s*/i, '').replace(/```\s*$/, '').trim()); }
+  catch { throw new Error("JSON 解析失敗，請重試"); }
 }
 
 // ── Settings ───────────────────────────────────────────
@@ -336,16 +403,16 @@ function go(id) {
 }
 
 // ── Helpers ─────────────────────────────────────────────
-function spin(id) { const e = document.getElementById(id); if (e) e.innerHTML = '<div class="spin-wrap"><div class="spin"></div></div>'; }
 function clr(id) { const e = document.getElementById(id); if (e) e.innerHTML = ''; }
 function err(id, msg) { const e = document.getElementById(id); if (e) e.innerHTML = `<div class="err">⚠️ <span style="flex:1">${msg}</span><button class="err-x" onclick="this.parentElement.parentElement.innerHTML=''">×</button></div>`; }
 function ld(id, on, def) { const b = document.getElementById(id); if (!b) return; b.disabled = on; b.textContent = on ? "⏳ 生成中…" : def; }
 
 // ── VOCAB ──────────────────────────────────────────────
-let VD = [], VI = 0, VM = 0, VF = false;
+let VD = [], VI = 0, VM = 0;
 
 function vMode(m, btn) {
-  VM = m; VF = false; document.getElementById('fin').classList.remove('on');
+  VM = m;
+  document.getElementById('fin').classList.remove('on');
   document.querySelectorAll('.mt').forEach((t, i) => t.classList.toggle('on', i === m));
   renderV();
 }
@@ -355,15 +422,16 @@ async function genVocab() {
   clr('verr'); document.getElementById('vcont').style.display = 'none';
   try {
     const r = await api(
-      "Generate exactly 5 B2-C1 vocabulary items about military, technology, or geopolitics.",
-      `Return a JSON array of exactly 5 objects with keys:
-word, pos (e.g."n."), def (English), zh (Chinese), ex (example sentence), tip (memory tip in Chinese),
-blank (ex with word replaced by ___), distractors (array of 3 wrong words at similar level).
-Return ONLY the JSON array — wrap it in {"items": [...]} since we need a JSON object.`
+      "Generate exactly 5 B2-C1 vocabulary items about military, technology, or international affairs.",
+      `Return a JSON object with key "items" containing an array of exactly 5 objects. Each object must have:
+word (string), pos (part of speech e.g. "n." "adj." "v."), def (English definition, 1 sentence),
+zh (繁體中文翻譯, e.g. "威懾"), zh_def (繁體中文解釋，1-2句說明此單字的意思和用法),
+ex (example sentence in English), tip (繁體中文記憶技巧，2句，包含字根分析或聯想法),
+blank (ex with the word replaced by ___), distractors (array of 3 wrong words at similar level).`
     );
-    const arr = Array.isArray(r) ? r : (r.items || r.words || r.vocabulary || Object.values(r)[0]);
-    if (!Array.isArray(arr) || !arr.length) throw new Error("格式錯誤");
-    VD = arr; VI = 0; VF = false;
+    const arr = r.items || r.words || r.vocabulary || (Array.isArray(r) ? r : Object.values(r)[0]);
+    if (!Array.isArray(arr) || !arr.length) throw new Error("格式錯誤，請重試");
+    VD = arr; VI = 0;
     document.getElementById('fin').classList.remove('on');
     document.getElementById('vcont').style.display = 'flex';
     renderV();
@@ -374,7 +442,7 @@ Return ONLY the JSON array — wrap it in {"items": [...]} since we need a JSON 
 function renderV() {
   if (!VD.length) return;
   const c = VD[VI];
-  VF = false; document.getElementById('fin').classList.remove('on');
+  document.getElementById('fin').classList.remove('on');
   document.getElementById('vprog').style.width = `${((VI + 1) / VD.length) * 100}%`;
   document.getElementById('vidx').textContent = `${VI + 1}/${VD.length}`;
   document.getElementById('vprev').disabled = VI === 0;
@@ -382,15 +450,20 @@ function renderV() {
   document.getElementById('vflip').style.display = VM === 0 ? 'block' : 'none';
   document.getElementById('vmcq').style.display = VM === 1 ? 'block' : 'none';
   document.getElementById('vfill').style.display = VM === 2 ? 'block' : 'none';
-  document.getElementById('fpos').textContent = c.pos;
-  document.getElementById('fword').textContent = c.word;
-  document.getElementById('fzh').textContent = c.zh;
-  document.getElementById('fdef').textContent = c.def;
-  document.getElementById('fex').textContent = `"${c.ex}"`;
-  document.getElementById('ftip').textContent = `💡 ${c.tip}`;
+
+  // Front
+  document.getElementById('fpos').textContent = c.pos || '';
+  document.getElementById('fword').textContent = c.word || '';
+  document.getElementById('fzh').textContent = c.zh || '';
+  // Back
+  document.getElementById('bfzh').textContent = (c.zh || '') + (c.zh_def ? '　' + c.zh_def : '');
+  document.getElementById('fdef').textContent = c.def || '';
+  document.getElementById('fex').textContent = c.ex ? `"${c.ex}"` : '';
+  document.getElementById('ftip').textContent = c.tip ? `💡 ${c.tip}` : '';
+
   if (VM === 1) {
     document.getElementById('mblank').textContent = c.blank || c.ex.replace(new RegExp(c.word, 'ig'), '___');
-    const opts = [...(c.distractors || []).slice(0, 3), c.word].sort((a, b) => (a + c.word).localeCompare(b + c.word));
+    const opts = [...(c.distractors || []).slice(0, 3), c.word].sort(() => Math.random() - 0.5);
     const con = document.getElementById('mopts'); con.innerHTML = '';
     document.getElementById('mexp').style.display = 'none';
     opts.forEach(o => {
@@ -400,24 +473,24 @@ function renderV() {
         b.classList.add(o === c.word ? 'ok' : 'no');
         if (o !== c.word) con.querySelectorAll('.opt').forEach(x => { if (x.textContent === c.word) x.classList.add('ok'); });
         document.getElementById('mres').textContent = o === c.word ? '✅ 正確！' : `❌ 答案：${c.word}`;
-        document.getElementById('mdef').textContent = c.def;
+        document.getElementById('mdef').textContent = c.zh_def || c.def || '';
         document.getElementById('mexp').style.display = 'block';
       };
       con.appendChild(b);
     });
   }
   if (VM === 2) {
-    document.getElementById('filldef').textContent = c.def;
-    document.getElementById('fillzh').textContent = `中文：${c.zh}`;
+    document.getElementById('filldef').textContent = c.def || '';
+    document.getElementById('fillzh').textContent = c.zh ? `中文：${c.zh}` : '';
     document.getElementById('fillblank').textContent = c.blank || c.ex.replace(new RegExp(c.word, 'ig'), '___');
     document.getElementById('fillinp').value = '';
     document.getElementById('fillres').style.display = 'none';
   }
 }
-function doFlip() { VF = !VF; document.getElementById('fin').classList.toggle('on', VF); }
+function doFlip() { document.getElementById('fin').classList.toggle('on'); }
 function vNav(d) { VI = Math.max(0, Math.min(VD.length - 1, VI + d)); renderV(); }
-function fillShow() { const c = VD[VI]; document.getElementById('fillrt').textContent = `答案：${c.word}`; document.getElementById('fillex').textContent = `"${c.ex}"`; document.getElementById('fillres').style.display = 'block'; }
-function fillCheck() { const c = VD[VI], v = document.getElementById('fillinp').value.trim().toLowerCase(), ok = v === c.word.toLowerCase(); document.getElementById('fillrt').textContent = ok ? `✅ 正確！` : `❌ 答案：${c.word}`; document.getElementById('fillex').textContent = `"${c.ex}"`; document.getElementById('fillres').style.display = 'block'; }
+function fillShow() { const c = VD[VI]; document.getElementById('fillrt').textContent = `答案：${c.word}`; document.getElementById('fillex').textContent = c.ex ? `"${c.ex}"` : ''; document.getElementById('fillres').style.display = 'block'; }
+function fillCheck() { const c = VD[VI], v = document.getElementById('fillinp').value.trim().toLowerCase(), ok = v === c.word.toLowerCase(); document.getElementById('fillrt').textContent = ok ? `✅ 正確！` : `❌ 答案：${c.word}`; document.getElementById('fillex').textContent = c.ex ? `"${c.ex}"` : ''; document.getElementById('fillres').style.display = 'block'; }
 
 // ── GRAMMAR ────────────────────────────────────────────
 let GQ = [], GI = 0, GS = { c: 0, t: 0 };
@@ -430,12 +503,12 @@ async function genGrammar() {
   try {
     const t = document.getElementById('gtopic').value;
     const r = await api(
-      `Generate exactly 5 FLPT-style MCQ grammar questions about: ${t}. B2-C1, military/professional context.`,
-      `Return a JSON object with key "questions" containing an array of exactly 5 objects with keys:
-q (question string), o (array of exactly 4 choices starting with "A) ","B) ","C) ","D) "),
-a (correct index 0-3), exp (explanation in Chinese+English, 2-3 sentences).`
+      `Generate exactly 5 FLPT-style MCQ grammar questions about: ${t}. B2-C1, military or professional context preferred.`,
+      `Return a JSON object with key "questions" containing an array of exactly 5 objects. Each object must have:
+q (question string with a blank or grammar choice), o (array of exactly 4 choices starting with "A) ","B) ","C) ","D) "),
+a (correct index 0-3), exp (繁體中文解釋為主，附英文補充，2-3句，說明為何此選項正確及語法規則).`
     );
-    const arr = Array.isArray(r) ? r : (r.questions || r.items || Object.values(r)[0]);
+    const arr = r.questions || r.items || (Array.isArray(r) ? r : Object.values(r)[0]);
     if (!Array.isArray(arr)) throw new Error("格式錯誤");
     GQ = arr; showGQ();
   } catch (e) { err('gerr', e.message); }
@@ -493,11 +566,12 @@ async function genSent() {
   try {
     const p = document.getElementById('stopic').value;
     const r = await api(
-      `Sentence pattern lesson for: "${p}". Military/tech/geopolitics context preferred.`,
+      `Sentence pattern lesson for: "${p}". Prefer professional or academic contexts.`,
       `Return a JSON object with keys:
-pattern (string), rule (English explanation 2-3 sentences), rule_zh (Chinese),
-examples (array of 3 example sentences),
-blanks (array of 3 objects: {sentence with ___ , answer, hint in Chinese}).`
+pattern (sentence pattern name), rule (English grammar explanation, 2-3 sentences),
+rule_zh (繁體中文語法說明，2-3句),
+examples (array of 3 example sentences in English),
+blanks (array of 3 objects: {sentence (English with ___), answer (the missing word/phrase), hint (繁體中文提示)}).`
     );
     renderSent(r, c);
   } catch (e) { err('serr', e.message); }
@@ -505,16 +579,19 @@ blanks (array of 3 objects: {sentence with ___ , answer, hint in Chinese}).`
 }
 
 function renderSent(d, c) {
-  const p = mk('div', 'glass acc fu', `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px">${esc(d.pattern || '')}</p><p class="serif" style="font-size:14px;line-height:1.8">${esc(d.rule || '')}</p><p style="font-size:12px;opacity:.42;margin-top:8px;line-height:1.7">${esc(d.rule_zh || '')}</p>`);
-  c.appendChild(p);
+  c.appendChild(mk('div', 'glass acc fu',
+    `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px">${esc(d.pattern || '')}</p>` +
+    `<p style="font-size:14px;line-height:1.8;color:var(--txt)">${esc(d.rule || '')}</p>` +
+    `<p style="font-size:12px;color:var(--txt2);margin-top:8px;line-height:1.7">${esc(d.rule_zh || '')}</p>`
+  ));
   if (d.examples?.length) {
     let h = `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">範例句</p>`;
-    d.examples.forEach((e, i) => h += `<div style="display:flex;gap:10px;margin-bottom:10px"><span style="color:var(--gold);font-size:11px;font-weight:700;min-width:14px;margin-top:3px">${i + 1}.</span><p class="serif" style="font-size:14px;line-height:1.8;opacity:.85">${esc(e)}</p></div>`);
+    d.examples.forEach((e, i) => h += `<div style="display:flex;gap:10px;margin-bottom:10px"><span style="color:var(--gold);font-size:11px;font-weight:700;min-width:14px;margin-top:3px">${i + 1}.</span><p style="font-size:14px;line-height:1.8;color:var(--txt)">${esc(e)}</p></div>`);
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
   }
   if (d.blanks?.length) {
     let h = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase">填空練習</p><button onclick="toggleAns(this)" style="font-size:11px;border:1px solid var(--gold-bd);color:var(--gold);background:none;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit">顯示答案</button></div>`;
-    d.blanks.forEach(b => h += `<div style="margin-bottom:14px"><p class="serif" style="font-size:14px;line-height:1.8;opacity:.85;margin-bottom:4px">${esc(b.sentence)}</p><p style="font-size:11px;opacity:.32;margin-bottom:8px">💡 ${esc(b.hint)}</p><input type="text" placeholder="填入答案…" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:10px;color:var(--txt);font-family:inherit;font-size:13px;outline:none;"><div class="ans-r" style="display:none;margin-top:6px;padding:8px 12px;border-radius:8px;background:var(--gold-bg);font-size:12px;color:var(--gold);font-weight:600">✓ ${esc(b.answer)}</div></div>`);
+    d.blanks.forEach(b => h += `<div style="margin-bottom:14px"><p style="font-size:14px;line-height:1.8;color:var(--txt);margin-bottom:4px">${esc(b.sentence)}</p><p style="font-size:11px;color:var(--txt3);margin-bottom:8px">💡 ${esc(b.hint)}</p><input type="text" placeholder="填入答案…" style="width:100%;padding:9px 12px;background:var(--surf2);border:1px solid var(--bd);border-radius:10px;color:var(--txt);font-family:inherit;font-size:13px;outline:none;"><div class="ans-r" style="display:none;margin-top:6px;padding:8px 12px;border-radius:8px;background:var(--gold-bg);font-size:12px;color:var(--gold);font-weight:600">✓ ${esc(b.answer)}</div></div>`);
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
   }
   c.style.display = 'flex';
@@ -528,28 +605,63 @@ async function genArt() {
   try {
     const t = document.getElementById('atopic').value;
     const r = await api(
-      `Write a 350-word B2-C1 English article about: ${t}. Formal, for military/defense professionals.`,
-      `Return a JSON object with keys:
-title, content (~350 words), translation (full Chinese translation),
-vocab (array of 5 objects: {word,zh,def,ex}),
-analysis (object with theme,structure,language,interp — all Chinese strings).`
+      `Write a 350-word B2-C1 English article about: ${t}. Formal, suitable for exam reading comprehension.`,
+      `Return a JSON object with exactly these keys:
+title (English article title),
+content (full article, approximately 350 words, in English),
+translation (完整繁體中文翻譯，逐段對應原文，不可省略，至少300字),
+vocab (array of 5 objects, each with: word, zh (繁體中文), def (English), ex (example sentence)),
+analysis (object with these 4 keys, all in 繁體中文:
+  theme (核心主旨，2句),
+  structure (段落結構說明，2句),
+  language (語言與措辭特色，2句),
+  interp (口譯備忘重點，2句)
+).`
     );
+    if (!r.title || !r.content) throw new Error("文章格式錯誤，請重試");
     renderArt(r, c);
   } catch (e) { err('aerr', e.message); }
   ld('abtn', false, '📰 生成深度文章');
 }
 
 function renderArt(d, c) {
-  c.appendChild(mk('div', 'glass fu', `<h2 style="font-size:19px;font-weight:800;color:var(--gold);margin-bottom:16px;line-height:1.4">${esc(d.title || '')}</h2><div class="serif" style="font-size:15px;line-height:2;opacity:.9;white-space:pre-wrap">${esc(d.content || '')}</div>`, 'padding:20px'));
+  c.appendChild(mk('div', 'glass fu',
+    `<h2 style="font-size:18px;font-weight:800;color:var(--gold);margin-bottom:16px;line-height:1.4">${esc(d.title || '')}</h2>` +
+    `<div style="font-size:15px;line-height:2;color:var(--txt);white-space:pre-wrap">${esc(d.content || '')}</div>`,
+    'padding:20px'
+  ));
+
+  // Vocab
   c.appendChild(togBtn('📚 展開關鍵字彙', '▲ 收起關鍵字彙', 'art-v'));
-  let vh = ''; (d.vocab || []).forEach((v, i) => vh += `<div style="padding:12px 0;${i ? 'border-top:1px solid var(--bd)' : ''}"><div style="display:flex;gap:8px;align-items:baseline;margin-bottom:4px"><span style="font-weight:700;color:var(--gold)">${esc(v.word)}</span><span style="font-size:12px;opacity:.5">${esc(v.zh)}</span></div><p class="serif" style="font-size:12px;opacity:.52;line-height:1.6">${esc(v.def)}</p><p class="serif" style="font-size:11px;font-style:italic;opacity:.38;margin-top:4px">"${esc(v.ex)}"</p></div>`);
+  let vh = '';
+  (d.vocab || []).forEach((v, i) => {
+    vh += `<div style="padding:12px 0;${i ? 'border-top:1px solid var(--bd)' : ''}">` +
+      `<div style="display:flex;gap:8px;align-items:baseline;margin-bottom:4px">` +
+      `<span style="font-weight:700;color:var(--gold)">${esc(v.word)}</span>` +
+      `<span style="font-size:12px;color:var(--txt2)">${esc(v.zh)}</span></div>` +
+      `<p style="font-size:12px;color:var(--txt2);line-height:1.6">${esc(v.def)}</p>` +
+      `<p style="font-size:11px;color:var(--txt3);margin-top:4px">"${esc(v.ex)}"</p></div>`;
+  });
   const vd = mk('div', 'glass fu', vh, 'padding:16px 18px;display:none'); vd.id = 'art-v'; c.appendChild(vd);
+
+  // Translation + Analysis
   c.appendChild(togBtn('🔍 展開中譯與研析', '▲ 收起中譯與研析', 'art-a'));
   const ad = document.createElement('div'); ad.id = 'art-a'; ad.style.cssText = 'display:none;flex-direction:column;gap:12px';
-  ad.appendChild(mk('div', 'glass fu', `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:10px">中文翻譯</p><p style="font-size:13px;opacity:.62;line-height:2.1;white-space:pre-wrap">${esc(d.translation || '')}</p>`, 'padding:18px'));
+
+  // Translation block
+  const transText = d.translation || '（無翻譯內容）';
+  ad.appendChild(mk('div', 'glass fu',
+    `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">繁體中文翻譯</p>` +
+    `<p style="font-size:13px;color:var(--txt2);line-height:2.1;white-space:pre-wrap">${esc(transText)}</p>`,
+    'padding:18px'
+  ));
+
+  // Analysis block
   if (d.analysis) {
     let ah = `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px">文章研析</p>`;
-    [['theme', '核心主旨'], ['structure', '段落結構'], ['language', '語言特色'], ['interp', '🎙️ 口譯備忘']].forEach(([k, l]) => { if (d.analysis[k]) ah += `<div style="margin-bottom:14px"><p style="font-size:9px;opacity:.38;letter-spacing:.3em;text-transform:uppercase;margin-bottom:4px">${l}</p><p style="font-size:13px;line-height:1.85;opacity:.77">${esc(d.analysis[k])}</p></div>`; });
+    [['theme', '核心主旨'], ['structure', '段落結構'], ['language', '語言特色'], ['interp', '🎙️ 口譯備忘']].forEach(([k, l]) => {
+      if (d.analysis[k]) ah += `<div style="margin-bottom:14px"><p style="font-size:9px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:4px">${l}</p><p style="font-size:13px;line-height:1.85;color:var(--txt2)">${esc(d.analysis[k])}</p></div>`;
+    });
     ad.appendChild(mk('div', 'glass fu', ah, 'padding:18px'));
   }
   c.appendChild(ad);
@@ -563,12 +675,13 @@ function mk(tag, cls, html, style) {
   if (style) e.style.cssText = style;
   return e;
 }
-function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function esc(s) { const d = document.createElement('div'); d.textContent = String(s || ''); return d.innerHTML; }
 function togBtn(openTxt, closeTxt, targetId) {
   const b = document.createElement('button'); b.className = 'btn-o'; b.textContent = openTxt;
   b.onclick = function () {
-    const el = document.getElementById(targetId), showing = el.style.display !== 'none' && el.style.display !== '';
-    el.style.display = showing ? 'none' : (el.tagName === 'DIV' && el.style.flexDirection ? 'flex' : 'block');
+    const el = document.getElementById(targetId);
+    const showing = el.style.display !== 'none' && el.style.display !== '';
+    el.style.display = showing ? 'none' : (el.tagName === 'DIV' && el.style.cssText.includes('flex-direction') ? 'flex' : 'block');
     this.textContent = showing ? openTxt : closeTxt;
   };
   return b;
