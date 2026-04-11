@@ -69,8 +69,9 @@ input:focus { border-color:var(--gold); }
 
 .tab { display:none; flex-direction:column; gap:14px; padding:16px; }
 .tab.on { display:flex; }
+#tab-home { gap:8px; }
 
-.hc { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:14px; padding:20px 18px; cursor:pointer; display:flex; align-items:center; gap:14px; transition:.15s; box-shadow:0 1px 4px rgba(0,0,0,.05); min-height:76px; }
+.hc { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:14px; padding:12px 14px; cursor:pointer; display:flex; align-items:center; gap:10px; transition:.15s; box-shadow:0 1px 4px rgba(0,0,0,.05); min-height:58px; }
 .hc:active { transform:scale(.98); opacity:.85; }
 
 .mtabs { display:flex; gap:8px; }
@@ -102,11 +103,11 @@ input:focus { border-color:var(--gold); }
 .zh-note { font-size:15px; color:var(--txt2); line-height:1.8; }
 
 /* Level selector */
-.lvl-wrap { background:var(--surf); border:1px solid var(--bd); border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:10px; }
+.lvl-wrap { background:var(--surf); border:1px solid var(--bd); border-radius:14px; padding:10px 12px; display:flex; flex-direction:column; gap:6px; }
 .lvl-title { font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--txt3); }
 .lvl-btns { display:flex; gap:8px; }
-.lvl-btn { flex:1; padding:12px 4px; border-radius:10px; border:1.5px solid var(--bd); background:none; color:var(--txt2); font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; transition:.15s; display:flex; flex-direction:column; align-items:center; gap:3px; min-height:64px; justify-content:center; }
-.lvl-btn .lvl-name { font-size:14px; font-weight:800; }
+.lvl-btn { flex:1; padding:7px 4px; border-radius:10px; border:1.5px solid var(--bd); background:none; color:var(--txt2); font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; transition:.15s; display:flex; flex-direction:column; align-items:center; gap:2px; min-height:50px; justify-content:center; }
+.lvl-btn .lvl-name { font-size:13px; font-weight:800; }
 .lvl-btn .lvl-sub { font-size:10px; font-weight:400; color:var(--txt3); letter-spacing:.02em; }
 .lvl-btn.b1.on { border-color:#3a7a3a; background:rgba(58,122,58,.08); color:#2a5a2a; }
 .lvl-btn.b1.on .lvl-sub { color:#3a7a3a; }
@@ -183,13 +184,13 @@ input:focus { border-color:var(--gold); }
     </div>
     <p id="lvl-desc" style="font-size:13px;color:var(--txt2);line-height:1.6"></p>
   </div>
-  <span class="lbl" style="padding-top:4px">選擇練習模式</span>
-  <div class="hc" onclick="go('vocab')"><span style="font-size:30px">📚</span><div><div style="font-size:19px;font-weight:700">Vocab Drill</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
-  <div class="hc" onclick="go('grammar')"><span style="font-size:30px">⚡</span><div><div style="font-size:19px;font-weight:700">Grammar Blast</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">B2-C1 文法 · 計分追蹤</div></div></div>
-  <div class="hc" onclick="go('sentence')"><span style="font-size:30px">✍️</span><div><div style="font-size:19px;font-weight:700">Sentence Forge</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">句型 · 範例 · 為什麼這樣用</div></div></div>
-  <div class="hc" onclick="go('talk')"><span style="font-size:30px">💬</span><div><div style="font-size:19px;font-weight:700">Daily Talk</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">日常對話 · Small talk · 美式生活</div></div></div>
-  <div class="hc" onclick="go('article')"><span style="font-size:30px">📰</span><div><div style="font-size:19px;font-weight:700">Article Room</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">深度文章 · 字彙 · 中譯 · 研析</div></div></div>
-  <p style="text-align:center;font-size:12px;color:var(--txt3);padding-bottom:4px">groq · llama-3.3-70b-versatile</p>
+  <span class="lbl" style="margin-bottom:2px">選擇練習模式</span>
+  <div class="hc" onclick="go('vocab')"><span style="font-size:22px">📚</span><div><div style="font-size:16px;font-weight:700">Vocab Drill</div><div style="font-size:12px;color:var(--txt3);margin-top:1px">字卡翻轉 · 選擇題 · 填空</div></div></div>
+  <div class="hc" onclick="go('grammar')"><span style="font-size:22px">⚡</span><div><div style="font-size:16px;font-weight:700">Grammar Blast</div><div style="font-size:12px;color:var(--txt3);margin-top:1px">分級文法 · 計分追蹤</div></div></div>
+  <div class="hc" onclick="go('sentence')"><span style="font-size:22px">✍️</span><div><div style="font-size:16px;font-weight:700">Sentence Forge</div><div style="font-size:12px;color:var(--txt3);margin-top:1px">句型 · 範例 · 為什麼這樣用</div></div></div>
+  <div class="hc" onclick="go('talk')"><span style="font-size:22px">💬</span><div><div style="font-size:16px;font-weight:700">Daily Talk</div><div style="font-size:12px;color:var(--txt3);margin-top:1px">日常對話 · Small talk · 美式生活</div></div></div>
+  <div class="hc" onclick="go('article')"><span style="font-size:22px">📰</span><div><div style="font-size:16px;font-weight:700">Article Room</div><div style="font-size:12px;color:var(--txt3);margin-top:1px">深度文章 · 字彙 · 中譯 · 研析</div></div></div>
+  <p style="text-align:center;font-size:10px;color:var(--txt3)">groq · llama-3.3-70b-versatile</p>
 </div>
 
 <!-- VOCAB -->
@@ -499,7 +500,7 @@ const LEVELS = {
   b1: {
     label: 'B1 入門',
     desc: '高頻學術詞彙（前3000-5000詞）、常見句型、日常語法。適合打好基礎。',
-    vocab: 'Select words from the 3000-5000 most common English words. Focus on high-frequency academic and everyday vocabulary. Words should be recognizable but not mastered by an intermediate learner.',
+    vocab: 'Select words strictly from the 3000-5000 most common English words. These should be high-frequency words that appear in everyday conversation, popular news, and textbooks — for example: acquire, significant, adapt, factor, relevant, achieve, establish, assume, identify, maintain. AVOID low-frequency, specialist, or literary vocabulary. Each word must be one an intermediate (B1) learner would encounter regularly but may not yet fully command.',
     grammar: 'Generate 3 straightforward B1 questions followed by 2 slightly harder B2 warm-up questions. Use simple, everyday contexts. Avoid complex inversion or subjunctive.',
     grammar_label: '3× B1 + 2× B2',
     sent: 'Choose common, practical B1-B2 sentence patterns used in everyday communication. Use simple, relatable contexts.',
@@ -509,7 +510,7 @@ const LEVELS = {
   b2: {
     label: 'B2 進階',
     desc: 'FLPT 標準詞彙（5000-8000詞）、中高頻學術及專業詞彙、複雜句型。',
-    vocab: 'Select words from the 5000-8000 most common English words. Focus on academic and professional vocabulary suitable for FLPT B2-C1 exams. Words should appear in quality journalism and business writing.',
+    vocab: 'Select words from the 5000-8000 most common English words. Focus on academic and professional vocabulary suitable for FLPT B2-C1 exams. Words should appear in quality journalism and business writing. Avoid both very common words (like "important", "show", "help") and very rare specialist vocabulary. Target the FLPT/GEPT High-Intermediate to Advanced range.',
     grammar: 'Generate 2 solid B2 questions followed by 3 challenging C1 questions. Use professional and academic contexts. Include complex structures like inversion, passive reporting, or mixed conditionals.',
     grammar_label: '2× B2 + 3× C1',
     sent: 'Choose B2-C1 sentence patterns useful for formal writing and professional communication. Use professional and academic contexts.',
@@ -519,7 +520,7 @@ const LEVELS = {
   c1: {
     label: 'C1 精英',
     desc: '低頻專業詞彙、複雜語法結構（倒裝、虛擬語氣、複雜從句）、正式書面語。',
-    vocab: 'Select low-frequency sophisticated vocabulary from academic papers, quality journalism, and formal written English. Words should challenge an advanced learner and appear in C1-C2 level texts.',
+    vocab: 'Select low-frequency sophisticated vocabulary exclusively from academic papers, legal texts, quality journalism, and formal written English. Examples of target register: exacerbate, proliferate, cognizant, juxtapose, obfuscate, acrimonious, predicated, commensurate, elucidate, propitious. AVOID common high-frequency words. Every word must genuinely challenge an advanced learner and be unlikely to appear in everyday conversation.',
     grammar: 'Generate 5 challenging C1-C2 questions. Include complex inversion, subjunctive mood, participle clauses, cleft sentences, and formal register. Use academic and professional contexts only.',
     grammar_label: '5× C1–C2',
     sent: 'Choose advanced C1-C2 sentence patterns used in formal academic writing, official documents, or high-level professional communication.',
@@ -546,6 +547,17 @@ function setLevel(lvl, btn) {
     el.textContent = cfg.label;
     el.className = `lvl-badge ${lvl}`;
   });
+  // Update grammar/sentence default dropdown option to reflect current level
+  const gtopic = document.getElementById('gtopic');
+  if (gtopic && gtopic.options[0]) {
+    gtopic.options[0].value = `any ${cfg.label} English grammar area`;
+    gtopic.options[0].text = `🎲 隨機出題（${cfg.grammar_label}）`;
+  }
+  const stopic = document.getElementById('stopic');
+  if (stopic && stopic.options[0]) {
+    stopic.options[0].value = `any ${cfg.label} English sentence pattern useful for writing and speaking`;
+    stopic.options[0].text = `🎲 隨機句型（${cfg.label}）`;
+  }
 }
 
 function getLvl() { return LEVELS[currentLevel] || LEVELS.b2; }
@@ -563,6 +575,20 @@ function getLvl() { return LEVELS[currentLevel] || LEVELS.b2; }
     el.textContent = LEVELS[lvl]?.label || '';
     el.className = `lvl-badge ${lvl}`;
   });
+  // Init grammar/sentence default dropdown option
+  const cfg2 = LEVELS[lvl];
+  if (cfg2) {
+    const gtopic = document.getElementById('gtopic');
+    if (gtopic && gtopic.options[0]) {
+      gtopic.options[0].value = `any ${cfg2.label} English grammar area`;
+      gtopic.options[0].text = `🎲 隨機出題（${cfg2.grammar_label}）`;
+    }
+    const stopic = document.getElementById('stopic');
+    if (stopic && stopic.options[0]) {
+      stopic.options[0].value = `any ${cfg2.label} English sentence pattern useful for writing and speaking`;
+      stopic.options[0].text = `🎲 隨機句型（${cfg2.label}）`;
+    }
+  }
 })();
 
 // Strict Traditional Chinese system prompt
