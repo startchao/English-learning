@@ -11,12 +11,13 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
+      color-scheme: light;
       --gold: #a07800; --gold-l: #b8900e;
       --gold-bg: rgba(160,120,0,0.09); --gold-bd: rgba(160,120,0,0.32);
       --bg: #f4f2ed; --surf: #ffffff; --surf2: #eeebe4;
       --bd: #d8d4c8; --txt: #1c1a16; --txt2: #4a4640; --txt3: #8a857a;
     }
-    html, body { height:100%; background:var(--bg); color:var(--txt); font-family:'Outfit',sans-serif; -webkit-tap-highlight-color:transparent; overscroll-behavior:none; font-size:17px; }
+    html, body { height:100%; background:var(--bg) !important; color:var(--txt) !important; font-family:'Outfit',sans-serif; -webkit-tap-highlight-color:transparent; overscroll-behavior:none; font-size:17px; color-scheme:light; }
     #app { max-width:480px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
 
 ```
@@ -166,7 +167,7 @@ input:focus { border-color:var(--gold); }
 <div id="app">
   <header>
     <div><div class="h-title">English Dojo</div><div class="h-sub">FLPT · Conversation · Reading</div></div>
-    <button id="btn-set">⚙️</button>
+    <button id="btn-set" style="margin-left:auto">⚙️</button>
   </header>
   <main id="main">
 
@@ -296,9 +297,9 @@ input:focus { border-color:var(--gold); }
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center">
       <span style="font-size:15px;font-weight:700;color:var(--txt)">我的單字本 <span id="vsaved-count" style="font-size:13px;color:var(--txt3);font-weight:400"></span></span>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button onclick="printVocab()" class="btn-o" style="padding:10px 14px;font-size:13px;min-height:40px">🖨️ 列印 / PDF</button>
-        <button onclick="clearVocabSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px">清除全部</button>
+      <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+        <button onclick="printVocab()" class="btn-o" style="padding:9px 12px;font-size:13px;min-height:38px;white-space:nowrap">🖨️ 列印</button>
+        <button onclick="clearVocabSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px;white-space:nowrap">清除全部</button>
       </div>
     </div>
     <div id="vsaved-list"></div>
@@ -307,11 +308,11 @@ input:focus { border-color:var(--gold); }
 
 <!-- GRAMMAR -->
 <div id="tab-grammar" class="tab">
-  <div style="display:flex;justify-content:space-between;align-items:center">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
     <span class="lbl" style="margin:0">選擇文法主題</span>
     <span id="badge-grammar" class="lvl-badge b2">B2 進階</span>
   </div>
-    <select id="gtopic">
+  <select id="gtopic">
       <option value="any B2-C1 English grammar area">🎲 隨機出題</option>
       <option value="modal perfect constructions (should have, could have, must have, would have)">Modal Perfects</option>
       <option value="mixed conditionals (type 2+3, type 3+2)">Mixed Conditionals</option>
@@ -326,7 +327,6 @@ input:focus { border-color:var(--gold); }
       <option value="participle clauses (having done, being done, done)">Participle Clauses</option>
       <option value="gerund vs infinitive with change of meaning">Gerund vs Infinitive</option>
     </select>
-  </div>
   <div id="gsc" style="display:none" class="sc-b">
     <span style="font-size:13px;color:var(--txt2)">本輪得分</span>
     <span id="gsct" style="font-size:24px;font-weight:800;color:var(--gold)">0/0</span>
@@ -361,11 +361,11 @@ input:focus { border-color:var(--gold); }
 
 <!-- SENTENCE FORGE -->
 <div id="tab-sentence" class="tab">
-  <div style="display:flex;justify-content:space-between;align-items:center">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
     <span class="lbl" style="margin:0">選擇句型</span>
     <span id="badge-sentence" class="lvl-badge b2">B2 進階</span>
   </div>
-    <select id="stopic">
+  <select id="stopic">
       <option value="any B2-C1 English sentence pattern useful for writing and speaking">🎲 隨機句型</option>
       <option value="Not only...but also with subject-auxiliary inversion">Not only...but also</option>
       <option value="Perfect participle clause Having done...">Having + V-ed</option>
@@ -378,7 +378,6 @@ input:focus { border-color:var(--gold); }
       <option value="Nominal cleft: What + clause + be">What...is/are</option>
       <option value="Expressing concession: While / Although / Even though + contrast">While / Although</option>
     </select>
-  </div>
   <button class="btn-p" id="sbtn" onclick="genSent()">✍️ 生成句型練習</button>
   <div id="serr"></div>
   <div id="scont" style="display:none;flex-direction:column;gap:12px"></div>
@@ -415,7 +414,7 @@ input:focus { border-color:var(--gold); }
   <div id="tpanel-saved" style="display:none;flex-direction:column;gap:14px">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <span style="font-size:15px;font-weight:700;color:var(--txt)">我的對話收藏</span>
-      <button onclick="clearTalkSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px">清除全部</button>
+      <button onclick="clearTalkSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px;white-space:nowrap;flex-shrink:0">清除全部</button>
     </div>
     <div id="tsaved-list"></div>
   </div>
@@ -423,11 +422,11 @@ input:focus { border-color:var(--gold); }
 
 <!-- ARTICLE -->
 <div id="tab-article" class="tab">
-  <div style="display:flex;justify-content:space-between;align-items:center">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
     <span class="lbl" style="margin:0">選擇文章主題</span>
     <span id="badge-article" class="lvl-badge b2">B2 進階</span>
   </div>
-    <select id="atopic">
+  <select id="atopic">
       <option value="any current affairs, academic, or social topic suitable for B2-C1 English reading comprehension exams, chosen randomly from a wide range of fields">🎲 隨機主題</option>
       <optgroup label="🌏 國際與政治">
         <option value="C4ISR systems and modern military command networks">C4ISR 系統</option>
@@ -454,7 +453,6 @@ input:focus { border-color:var(--gold); }
         <option value="food security, sustainable agriculture, and the global hunger challenge">糧食安全</option>
       </optgroup>
     </select>
-  </div>
   <button class="btn-p" id="abtn" onclick="genArt()">📰 生成深度文章</button>
   <div id="aerr"></div>
   <div id="acont" style="display:none;flex-direction:column;gap:12px"></div>
