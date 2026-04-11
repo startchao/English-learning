@@ -100,6 +100,26 @@ input:focus { border-color:var(--gold); }
 .eng-quote { font-size:15px; color:var(--txt); background:var(--surf2); border-left:3px solid var(--gold); padding:9px 13px; border-radius:0 8px 8px 0; margin-bottom:7px; line-height:1.7; }
 .zh-note { font-size:15px; color:var(--txt2); line-height:1.8; }
 
+/* Level selector */
+.lvl-wrap { background:var(--surf); border:1px solid var(--bd); border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:10px; }
+.lvl-title { font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--txt3); }
+.lvl-btns { display:flex; gap:8px; }
+.lvl-btn { flex:1; padding:12px 4px; border-radius:10px; border:1.5px solid var(--bd); background:none; color:var(--txt2); font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; transition:.15s; display:flex; flex-direction:column; align-items:center; gap:3px; min-height:64px; justify-content:center; }
+.lvl-btn .lvl-name { font-size:14px; font-weight:800; }
+.lvl-btn .lvl-sub { font-size:10px; font-weight:400; color:var(--txt3); letter-spacing:.02em; }
+.lvl-btn.b1.on { border-color:#3a7a3a; background:rgba(58,122,58,.08); color:#2a5a2a; }
+.lvl-btn.b1.on .lvl-sub { color:#3a7a3a; }
+.lvl-btn.b2.on { border-color:var(--gold); background:var(--gold-bg); color:var(--gold); }
+.lvl-btn.b2.on .lvl-sub { color:var(--gold-l); }
+.lvl-btn.c1.on { border-color:#7040c0; background:rgba(112,64,192,.07); color:#5030a0; }
+.lvl-btn.c1.on .lvl-sub { color:#7040c0; }
+
+/* Level badge shown inside each practice page */
+.lvl-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:.04em; }
+.lvl-badge.b1 { background:rgba(58,122,58,.1); color:#2a5a2a; border:1px solid rgba(58,122,58,.25); }
+.lvl-badge.b2 { background:var(--gold-bg); color:var(--gold); border:1px solid var(--gold-bd); }
+.lvl-badge.c1 { background:rgba(112,64,192,.08); color:#5030a0; border:1px solid rgba(112,64,192,.25); }
+
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-thumb { background:var(--bd); border-radius:3px; }
 
@@ -153,6 +173,15 @@ input:focus { border-color:var(--gold); }
 ```
 <!-- HOME -->
 <div id="tab-home" class="tab on">
+  <div class="lvl-wrap">
+    <span class="lvl-title">學習等級</span>
+    <div class="lvl-btns">
+      <button class="lvl-btn b1" onclick="setLevel('b1',this)"><span class="lvl-name">B1</span><span class="lvl-sub">入門</span></button>
+      <button class="lvl-btn b2 on" onclick="setLevel('b2',this)"><span class="lvl-name">B2</span><span class="lvl-sub">進階</span></button>
+      <button class="lvl-btn c1" onclick="setLevel('c1',this)"><span class="lvl-name">C1</span><span class="lvl-sub">精英</span></button>
+    </div>
+    <p id="lvl-desc" style="font-size:13px;color:var(--txt2);line-height:1.6"></p>
+  </div>
   <span class="lbl" style="padding-top:4px">選擇練習模式</span>
   <div class="hc" onclick="go('vocab')"><span style="font-size:30px">📚</span><div><div style="font-size:19px;font-weight:700">Vocab Drill</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
   <div class="hc" onclick="go('grammar')"><span style="font-size:30px">⚡</span><div><div style="font-size:19px;font-weight:700">Grammar Blast</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">B2-C1 文法 · 計分追蹤</div></div></div>
@@ -164,9 +193,12 @@ input:focus { border-color:var(--gold); }
 
 <!-- VOCAB -->
 <div id="tab-vocab" class="tab">
-  <div class="stabs">
-    <button class="st on" onclick="vSubTab(0,this)">🎯 練習</button>
-    <button class="st" onclick="vSubTab(1,this)">📖 單字本</button>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div class="stabs" style="flex:1;margin-right:10px">
+      <button class="st on" onclick="vSubTab(0,this)">🎯 練習</button>
+      <button class="st" onclick="vSubTab(1,this)">📖 單字本</button>
+    </div>
+    <span id="badge-vocab" class="lvl-badge b2">B2 進階</span>
   </div>
   <div id="vpanel-drill" style="display:flex;flex-direction:column;gap:14px">
     <div class="mtabs">
@@ -275,7 +307,10 @@ input:focus { border-color:var(--gold); }
 
 <!-- GRAMMAR -->
 <div id="tab-grammar" class="tab">
-  <div><span class="lbl">選擇文法主題</span>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="lbl" style="margin:0">選擇文法主題</span>
+    <span id="badge-grammar" class="lvl-badge b2">B2 進階</span>
+  </div>
     <select id="gtopic">
       <option value="any B2-C1 English grammar area">🎲 隨機出題</option>
       <option value="modal perfect constructions (should have, could have, must have, would have)">Modal Perfects</option>
@@ -326,7 +361,10 @@ input:focus { border-color:var(--gold); }
 
 <!-- SENTENCE FORGE -->
 <div id="tab-sentence" class="tab">
-  <div><span class="lbl">選擇句型</span>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="lbl" style="margin:0">選擇句型</span>
+    <span id="badge-sentence" class="lvl-badge b2">B2 進階</span>
+  </div>
     <select id="stopic">
       <option value="any B2-C1 English sentence pattern useful for writing and speaking">🎲 隨機句型</option>
       <option value="Not only...but also with subject-auxiliary inversion">Not only...but also</option>
@@ -348,9 +386,12 @@ input:focus { border-color:var(--gold); }
 
 <!-- DAILY TALK -->
 <div id="tab-talk" class="tab">
-  <div class="stabs">
-    <button class="st on" onclick="tSubTab(0,this)">💬 練習</button>
-    <button class="st" onclick="tSubTab(1,this)">📖 收藏</button>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div class="stabs" style="flex:1;margin-right:10px">
+      <button class="st on" onclick="tSubTab(0,this)">💬 練習</button>
+      <button class="st" onclick="tSubTab(1,this)">📖 收藏</button>
+    </div>
+    <span id="badge-talk" class="lvl-badge b2">B2 進階</span>
   </div>
   <div id="tpanel-drill" style="display:flex;flex-direction:column;gap:14px">
     <div><span class="lbl">選擇對話情境</span>
@@ -382,7 +423,10 @@ input:focus { border-color:var(--gold); }
 
 <!-- ARTICLE -->
 <div id="tab-article" class="tab">
-  <div><span class="lbl">選擇文章主題</span>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="lbl" style="margin:0">選擇文章主題</span>
+    <span id="badge-article" class="lvl-badge b2">B2 進階</span>
+  </div>
     <select id="atopic">
       <option value="any current affairs, academic, or social topic suitable for B2-C1 English reading comprehension exams, chosen randomly from a wide range of fields">🎲 隨機主題</option>
       <optgroup label="🌏 國際與政治">
@@ -451,6 +495,77 @@ input:focus { border-color:var(--gold); }
 <script>
 const MDL = "llama-3.3-70b-versatile";
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+// ── Level system ──────────────────────────────────────
+const LEVELS = {
+  b1: {
+    label: 'B1 入門',
+    desc: '高頻學術詞彙（前3000-5000詞）、常見句型、日常語法。適合打好基礎。',
+    vocab: 'Select words from the 3000-5000 most common English words. Focus on high-frequency academic and everyday vocabulary. Words should be recognizable but not mastered by an intermediate learner.',
+    grammar: 'Generate 3 straightforward B1 questions followed by 2 slightly harder B2 warm-up questions. Use simple, everyday contexts. Avoid complex inversion or subjunctive.',
+    grammar_label: '3× B1 + 2× B2',
+    sent: 'Choose common, practical B1-B2 sentence patterns used in everyday communication. Use simple, relatable contexts.',
+    talk: 'Use natural, friendly American English. Vocabulary and grammar should be accessible for intermediate learners. Avoid idioms that are too obscure.',
+    article: 'Write at B1-B2 reading level. Use common vocabulary, shorter sentences, and clear logical structure. Avoid highly technical terms.'
+  },
+  b2: {
+    label: 'B2 進階',
+    desc: 'FLPT 標準詞彙（5000-8000詞）、中高頻學術及專業詞彙、複雜句型。',
+    vocab: 'Select words from the 5000-8000 most common English words. Focus on academic and professional vocabulary suitable for FLPT B2-C1 exams. Words should appear in quality journalism and business writing.',
+    grammar: 'Generate 2 solid B2 questions followed by 3 challenging C1 questions. Use professional and academic contexts. Include complex structures like inversion, passive reporting, or mixed conditionals.',
+    grammar_label: '2× B2 + 3× C1',
+    sent: 'Choose B2-C1 sentence patterns useful for formal writing and professional communication. Use professional and academic contexts.',
+    talk: 'Use authentic American English including idioms, collocations, and natural spoken expressions. Vocabulary should reflect educated native speaker usage.',
+    article: 'Write at B2-C1 reading level. Use sophisticated vocabulary, varied sentence structures, and well-developed arguments. Include academic collocations.'
+  },
+  c1: {
+    label: 'C1 精英',
+    desc: '低頻專業詞彙、複雜語法結構（倒裝、虛擬語氣、複雜從句）、正式書面語。',
+    vocab: 'Select low-frequency sophisticated vocabulary from academic papers, quality journalism, and formal written English. Words should challenge an advanced learner and appear in C1-C2 level texts.',
+    grammar: 'Generate 5 challenging C1-C2 questions. Include complex inversion, subjunctive mood, participle clauses, cleft sentences, and formal register. Use academic and professional contexts only.',
+    grammar_label: '5× C1–C2',
+    sent: 'Choose advanced C1-C2 sentence patterns used in formal academic writing, official documents, or high-level professional communication.',
+    talk: 'Use sophisticated American English with nuanced expressions, formal and semi-formal register variations, and culturally specific references. Aim for near-native fluency.',
+    article: 'Write at C1-C2 reading level. Use specialist vocabulary, complex sentence structures, implicit reasoning, and the register of quality broadsheet journalism or academic publications.'
+  }
+};
+
+let currentLevel = localStorage.getItem('lvl') || 'b2';
+
+function setLevel(lvl, btn) {
+  currentLevel = lvl;
+  localStorage.setItem('lvl', lvl);
+  // Update home buttons
+  document.querySelectorAll('.lvl-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  // Update description
+  document.getElementById('lvl-desc').textContent = LEVELS[lvl].desc;
+  // Update all badges
+  const cfg = LEVELS[lvl];
+  ['vocab','grammar','sentence','talk','article'].forEach(id => {
+    const el = document.getElementById('badge-'+id);
+    if (!el) return;
+    el.textContent = cfg.label;
+    el.className = `lvl-badge ${lvl}`;
+  });
+}
+
+function getLvl() { return LEVELS[currentLevel] || LEVELS.b2; }
+
+// Init level on load
+(function initLevel(){
+  const lvl = currentLevel;
+  const btn = document.querySelector(`.lvl-btn.${lvl}`);
+  if (btn) { document.querySelectorAll('.lvl-btn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); }
+  const desc = document.getElementById('lvl-desc');
+  if (desc) desc.textContent = LEVELS[lvl]?.desc || '';
+  ['vocab','grammar','sentence','talk','article'].forEach(id => {
+    const el = document.getElementById('badge-'+id);
+    if (!el) return;
+    el.textContent = LEVELS[lvl]?.label || '';
+    el.className = `lvl-badge ${lvl}`;
+  });
+})();
 
 // Strict Traditional Chinese system prompt
 const ZH_SYS = `MANDATORY LANGUAGE RULES:
@@ -676,9 +791,10 @@ async function genVocab(){
   ld('vbtn',true,'🎲 生成字彙組（5 張）');
   clr('verr'); document.getElementById('vcont').style.display='none';
   const domains=pickDomains();
+  const lvl=getLvl();
   try{
     const r=await api(
-      `Generate exactly 5 B2-C1 level English vocabulary words from these domains: ${domains}. Choose genuinely useful words for an educated adult learner aiming for C1 level.`,
+      `Generate exactly 5 English vocabulary words from these domains: ${domains}.\nDifficulty level: ${lvl.label}. Instruction: ${lvl.vocab}`,
       `{"items":[{"word":"string","pos":"n.|v.|adj.|adv.","zh":"台灣繁體中文短譯(2-4字)","zh_def":"台灣繁體中文解釋1句","def":"English definition 1 sentence","def_zh":"上句的台灣繁體中文翻譯","ex":"English example sentence","ex_zh":"上句的台灣繁體中文翻譯","tip":"台灣繁體中文記憶技巧1句(字根/聯想/對比)","blank":"ex sentence with word replaced by ___","distractors":["wrong1","wrong2","wrong3"]}]}`
     );
     const arr=r.items||r.words||r.vocabulary||(Array.isArray(r)?r:Object.values(r)[0]);
@@ -772,8 +888,9 @@ async function genGrammar(){
   document.getElementById('gdone').style.display='none';
   try{
     const t=document.getElementById('gtopic').value;
+    const lvl=getLvl();
     const r=await api(
-      `Generate exactly 5 B2-C1 English grammar MCQ questions testing: ${t}. Use varied real-world contexts (business, environment, science, daily life).`,
+      `Generate exactly 5 English grammar MCQ questions testing: ${t}.\nDifficulty level: ${lvl.label}. Instruction: ${lvl.grammar} (${lvl.grammar_label}). Use varied real-world contexts (business, environment, science, daily life).`,
       `{"questions":[{"q":"English question string with blank","o":["A) ...","B) ...","C) ...","D) ..."],"a":0,"exp":"台灣繁體中文解釋2-3句：說明正確答案的文法規則，以及其他選項錯誤的原因"}]}`
     );
     const arr=r.questions||r.items||(Array.isArray(r)?r:Object.values(r)[0]);
@@ -827,8 +944,9 @@ async function genSent(){
   clr('serr'); const c=document.getElementById('scont'); c.innerHTML=''; c.style.display='none';
   try{
     const p=document.getElementById('stopic').value;
+    const lvl=getLvl();
     const r=await api(
-      `Create a sentence pattern lesson for: "${p}". Use varied everyday, business, and current affairs contexts.`,
+      `Create a sentence pattern lesson for: "${p}".\nDifficulty level: ${lvl.label}. Instruction: ${lvl.sent}`,
       `{"pattern":"string","rule":"English explanation 2-3 sentences","rule_zh":"台灣繁體中文翻譯2-3句","examples":["en sentence 1","en sentence 2","en sentence 3"],"blanks":[{"sentence":"English with ___","answer":"correct fill","answer_zh":"台灣繁體中文翻譯","why":"台灣繁體中文語法解釋2句"}]}`
     );
     renderSent(r,c);
@@ -924,8 +1042,9 @@ async function genTalk(){
   clr('terr'); const c=document.getElementById('tcont'); c.innerHTML=''; c.style.display='none';
   try{
     const t=document.getElementById('ttopic').value;
+    const lvl=getLvl();
     const r=await api(
-      `Create an American English daily conversation practice set about: ${t}.`,
+      `Create an American English daily conversation practice set about: ${t}.\nDifficulty level: ${lvl.label}. Instruction: ${lvl.talk}`,
       `{"topic":"台灣繁體中文情境說明1句","phrases":[{"en":"natural American English phrase or 1-2 line dialogue","zh":"台灣繁體中文翻譯","note":"台灣繁體中文使用說明1句"}],"tips":["台灣繁體中文文化小提示1","tip2","tip3"]}`
     );
     renderTalk(r,c,true);
@@ -977,8 +1096,9 @@ async function genArt(){
   clr('aerr'); const c=document.getElementById('acont'); c.innerHTML=''; c.style.display='none';
   try{
     const t=document.getElementById('atopic').value;
+    const lvl=getLvl();
     const r=await api(
-      `Write a 300-350 word B2-C1 English article about: ${t}. Formal register, suitable for reading comprehension practice.`,
+      `Write a 300-350 word English article about: ${t}.\nDifficulty level: ${lvl.label}. Instruction: ${lvl.article}`,
       `{"title":"English title","content":"full article 300-350 words 3-4 paragraphs","translation":"逐段完整台灣繁體中文翻譯，不少於250字","vocab":[{"word":"string","zh":"台灣繁體中文","def":"English definition","ex":"English example"}],"analysis":{"theme":"quote→台灣繁體中文分析","structure":"quote→台灣繁體中文分析","language":"quote→台灣繁體中文分析","interp":"quote→台灣繁體中文分析"}}`
     );
     if(!r.title||!r.content) throw new Error("文章格式錯誤，請重試");
