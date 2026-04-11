@@ -16,84 +16,99 @@
       --bg: #f4f2ed; --surf: #ffffff; --surf2: #eeebe4;
       --bd: #d8d4c8; --txt: #1c1a16; --txt2: #4a4640; --txt3: #8a857a;
     }
-    html, body { height:100%; background:var(--bg); color:var(--txt); font-family:'Outfit',sans-serif; -webkit-tap-highlight-color:transparent; overscroll-behavior:none; font-size:16px; }
+    html, body { height:100%; background:var(--bg); color:var(--txt); font-family:'Outfit',sans-serif; -webkit-tap-highlight-color:transparent; overscroll-behavior:none; font-size:17px; }
     #app { max-width:480px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
 
 ```
-header { position:sticky; top:0; z-index:40; padding:13px 18px; border-bottom:1px solid var(--bd); background:rgba(244,242,237,0.96); backdrop-filter:blur(12px); display:flex; justify-content:space-between; align-items:center; }
-.h-title { font-size:18px; font-weight:800; color:var(--gold); }
-.h-sub { font-size:8px; letter-spacing:.32em; opacity:.38; text-transform:uppercase; margin-top:2px; }
-#btn-set { background:var(--surf); border:1px solid var(--bd); border-radius:50%; width:36px; height:36px; font-size:16px; cursor:pointer; }
+header { position:sticky; top:0; z-index:40; padding:14px 18px; border-bottom:1px solid var(--bd); background:rgba(244,242,237,0.96); backdrop-filter:blur(12px); display:flex; justify-content:space-between; align-items:center; }
+.h-title { font-size:20px; font-weight:800; color:var(--gold); }
+.h-sub { font-size:9px; letter-spacing:.32em; opacity:.38; text-transform:uppercase; margin-top:2px; }
+#btn-set { background:var(--surf); border:1px solid var(--bd); border-radius:50%; width:40px; height:40px; font-size:18px; cursor:pointer; }
 
-main { flex:1; overflow-y:auto; padding-bottom:90px; }
+main { flex:1; overflow-y:auto; padding-bottom:96px; }
 
-nav { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:8px 4px 20px; background:rgba(244,242,237,0.96); border-top:1px solid var(--bd); backdrop-filter:blur(12px); display:flex; justify-content:space-around; z-index:40; }
-.nb { background:none; border:none; color:var(--txt3); display:flex; flex-direction:column; align-items:center; gap:2px; opacity:.38; cursor:pointer; transition:.18s; padding:2px 4px; font-family:inherit; min-width:44px; }
+nav { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px; padding:8px 4px 22px; background:rgba(244,242,237,0.96); border-top:1px solid var(--bd); backdrop-filter:blur(12px); display:flex; justify-content:space-around; z-index:40; }
+.nb { background:none; border:none; color:var(--txt3); display:flex; flex-direction:column; align-items:center; gap:3px; opacity:.38; cursor:pointer; transition:.18s; padding:2px 4px; font-family:inherit; min-width:44px; min-height:44px; justify-content:center; }
 .nb.on { opacity:1; color:var(--gold); transform:scale(1.1); }
-.nb span:first-child { font-size:18px; }
-.nb span:last-child { font-size:7.5px; letter-spacing:.04em; }
+.nb span:first-child { font-size:20px; }
+.nb span:last-child { font-size:8px; letter-spacing:.04em; }
 
 .glass { background:var(--surf); border:1px solid var(--bd); border-radius:14px; }
-.btn-p { width:100%; padding:16px; background:var(--gold); color:#fff; font-weight:800; font-size:16px; border:none; border-radius:14px; cursor:pointer; font-family:inherit; transition:opacity .15s; }
+.btn-p { width:100%; padding:17px; background:var(--gold); color:#fff; font-weight:800; font-size:17px; border:none; border-radius:14px; cursor:pointer; font-family:inherit; transition:opacity .15s; min-height:54px; }
 .btn-p:active { opacity:.8; } .btn-p:disabled { opacity:.4; }
-.btn-o { width:100%; padding:13px; background:none; border:1px solid var(--gold-bd); color:var(--gold); font-weight:700; font-size:14px; border-radius:12px; cursor:pointer; font-family:inherit; }
-.btn-g { background:var(--surf2); border:1px solid var(--bd); color:var(--txt); padding:12px; border-radius:11px; cursor:pointer; font-family:inherit; font-size:14px; }
+.btn-o { width:100%; padding:14px; background:none; border:1px solid var(--gold-bd); color:var(--gold); font-weight:700; font-size:15px; border-radius:12px; cursor:pointer; font-family:inherit; min-height:48px; }
+.btn-g { background:var(--surf2); border:1px solid var(--bd); color:var(--txt); padding:13px; border-radius:11px; cursor:pointer; font-family:inherit; font-size:15px; min-height:48px; }
 .btn-g:disabled { opacity:.3; }
 
 .spin-wrap { display:flex; justify-content:center; padding:44px; }
 .spin { width:34px; height:34px; border:2.5px solid var(--gold); border-top-color:transparent; border-radius:50%; animation:sp .8s linear infinite; }
 @keyframes sp { to { transform:rotate(360deg); } }
 
-.err { margin:0 16px; padding:14px 16px; background:rgba(180,30,30,.07); border:1px solid rgba(180,30,30,.2); border-radius:12px; color:#a00; font-size:14px; display:flex; gap:10px; align-items:flex-start; }
-.err-x { background:none; border:none; color:#a00; font-size:18px; cursor:pointer; margin-left:auto; opacity:.5; font-family:inherit; }
+.err { margin:0 16px; padding:14px 16px; background:rgba(180,30,30,.07); border:1px solid rgba(180,30,30,.2); border-radius:12px; color:#a00; font-size:15px; display:flex; gap:10px; align-items:flex-start; }
+.err-x { background:none; border:none; color:#a00; font-size:20px; cursor:pointer; margin-left:auto; opacity:.5; font-family:inherit; padding:0 4px; }
 
-select { width:100%; padding:13px 38px 13px 15px; background:var(--surf); color:var(--txt); border:1px solid var(--bd); border-radius:12px; font-family:inherit; font-size:14px; outline:none; appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a07800' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
-input[type=text], input[type=password] { width:100%; padding:13px 15px; background:var(--surf); border:1px solid var(--bd); border-radius:12px; color:var(--txt); font-family:inherit; font-size:15px; outline:none; -webkit-appearance:none; }
+select { width:100%; padding:14px 40px 14px 16px; background:var(--surf); color:var(--txt); border:1px solid var(--bd); border-radius:12px; font-family:inherit; font-size:15px; outline:none; appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a07800' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 15px center; min-height:52px; }
+input[type=text], input[type=password] { width:100%; padding:14px 16px; background:var(--surf); border:1px solid var(--bd); border-radius:12px; color:var(--txt); font-family:inherit; font-size:16px; outline:none; -webkit-appearance:none; min-height:52px; autocapitalize:none; }
 input:focus { border-color:var(--gold); }
 
-.lbl { font-size:9px; letter-spacing:.32em; text-transform:uppercase; color:var(--txt3); margin-bottom:9px; display:block; }
-.card-lbl { font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-l); font-weight:700; margin-bottom:5px; display:block; }
+.lbl { font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--txt3); margin-bottom:10px; display:block; }
+.card-lbl { font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-l); font-weight:700; margin-bottom:6px; display:block; }
 
-.prog-w { height:3px; background:var(--bd); border-radius:3px; overflow:hidden; flex:1; }
+.prog-w { height:4px; background:var(--bd); border-radius:3px; overflow:hidden; flex:1; }
 .prog-f { height:100%; background:var(--gold); border-radius:3px; transition:width .3s; }
 
-.flip-sc { perspective:1000px; height:310px; cursor:pointer; }
+.flip-sc { perspective:1000px; height:330px; cursor:pointer; }
 .flip-in { position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.4,0,.2,1); transform-style:preserve-3d; }
 .flip-in.on { transform:rotateY(180deg); }
 .flip-f { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:14px; padding:22px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:var(--surf); border:1px solid var(--bd); }
 .flip-b { transform:rotateY(180deg); background:#fdfaf2; border-color:var(--gold-bd); justify-content:flex-start; align-items:flex-start; text-align:left; overflow-y:auto; padding-top:16px; }
 
-.opt { width:100%; padding:14px 16px; text-align:left; border-radius:12px; border:1px solid var(--bd); background:var(--surf); color:var(--txt); font-family:inherit; font-size:15px; cursor:pointer; line-height:1.4; transition:.15s; }
+.opt { width:100%; padding:15px 16px; text-align:left; border-radius:12px; border:1px solid var(--bd); background:var(--surf); color:var(--txt); font-family:inherit; font-size:16px; cursor:pointer; line-height:1.4; transition:.15s; min-height:52px; }
 .opt.ok { border-color:#2a8a4a; background:rgba(42,138,74,.08); color:#1a5c30; }
 .opt.no { border-color:#b83232; background:rgba(184,50,50,.07); color:#7a1010; }
 
-.acc { padding:14px 16px 14px 18px; border-left:4px solid var(--gold); border-radius:0 12px 12px 0; background:var(--gold-bg); }
-.sc-b { background:var(--gold-bg); border:1px solid var(--gold-bd); border-radius:12px; padding:11px 16px; display:flex; align-items:center; justify-content:space-between; }
+.acc { padding:15px 16px 15px 18px; border-left:4px solid var(--gold); border-radius:0 12px 12px 0; background:var(--gold-bg); }
+.sc-b { background:var(--gold-bg); border:1px solid var(--gold-bd); border-radius:12px; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; }
 
 .tab { display:none; flex-direction:column; gap:14px; padding:16px; }
 .tab.on { display:flex; }
 
-.hc { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:14px; padding:20px 18px; cursor:pointer; display:flex; align-items:center; gap:14px; transition:.15s; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.hc { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:14px; padding:20px 18px; cursor:pointer; display:flex; align-items:center; gap:14px; transition:.15s; box-shadow:0 1px 4px rgba(0,0,0,.05); min-height:76px; }
 .hc:active { transform:scale(.98); opacity:.85; }
 
 .mtabs { display:flex; gap:8px; }
-.mt { flex:1; padding:10px 4px; font-size:12px; font-weight:600; border-radius:10px; border:1px solid var(--gold-bd); background:none; color:var(--gold); cursor:pointer; font-family:inherit; }
+.mt { flex:1; padding:11px 4px; font-size:13px; font-weight:600; border-radius:10px; border:1px solid var(--gold-bd); background:none; color:var(--gold); cursor:pointer; font-family:inherit; min-height:46px; }
 .mt.on { background:var(--gold); color:#fff; border-color:var(--gold); }
 
-/* Sub-tabs inside a page */
 .stabs { display:flex; gap:0; border:1px solid var(--bd); border-radius:12px; overflow:hidden; }
-.st { flex:1; padding:11px 4px; font-size:12px; font-weight:600; border:none; background:none; color:var(--txt2); cursor:pointer; font-family:inherit; border-right:1px solid var(--bd); }
+.st { flex:1; padding:12px 4px; font-size:13px; font-weight:600; border:none; background:none; color:var(--txt2); cursor:pointer; font-family:inherit; border-right:1px solid var(--bd); min-height:48px; }
 .st:last-child { border-right:none; }
 .st.on { background:var(--gold); color:#fff; }
 
 @keyframes fu { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 .fu { animation:fu .28s ease forwards; }
 
-#ov { position:fixed; inset:0; z-index:99; background:rgba(244,242,237,0.99); display:none; flex-direction:column; justify-content:center; padding:32px 24px; gap:12px; }
+#ov { position:fixed; inset:0; z-index:99; background:rgba(244,242,237,0.99); display:none; flex-direction:column; justify-content:center; padding:32px 24px; gap:13px; overflow-y:auto; }
 
-/* Article analysis English quote style */
-.eng-quote { font-size:14px; color:var(--txt); background:var(--surf2); border-left:3px solid var(--gold); padding:8px 12px; border-radius:0 8px 8px 0; margin-bottom:6px; line-height:1.7; }
-.zh-note { font-size:14px; color:var(--txt2); line-height:1.8; }
+/* Speech button */
+.speak-btn { background:var(--gold-bg); border:1px solid var(--gold-bd); border-radius:50%; width:46px; height:46px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:.15s; }
+.speak-btn:active { transform:scale(.92); background:var(--gold); }
+.speak-btn.speaking { background:var(--gold); animation:pulse 1s ease infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+
+/* Saved list styles */
+.saved-item { background:var(--surf); border:1px solid var(--bd); border-left:4px solid var(--gold); border-radius:12px; padding:16px; display:flex; flex-direction:column; gap:8px; position:relative; }
+.saved-del { position:absolute; top:10px; right:12px; background:none; border:none; font-size:18px; cursor:pointer; color:var(--txt3); opacity:.4; padding:4px 6px; }
+.saved-del:active { opacity:1; color:#a00; }
+.saved-date { font-size:10px; color:var(--txt3); letter-spacing:.04em; }
+
+.empty-state { text-align:center; padding:48px 20px; color:var(--txt3); }
+.empty-state .icon { font-size:48px; margin-bottom:12px; }
+.empty-state p { font-size:15px; line-height:1.7; }
+
+/* Article quote style */
+.eng-quote { font-size:15px; color:var(--txt); background:var(--surf2); border-left:3px solid var(--gold); padding:9px 13px; border-radius:0 8px 8px 0; margin-bottom:7px; line-height:1.7; }
+.zh-note { font-size:15px; color:var(--txt2); line-height:1.8; }
 
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-thumb { background:var(--bd); border-radius:3px; }
@@ -113,96 +128,123 @@ input:focus { border-color:var(--gold); }
 <!-- HOME -->
 <div id="tab-home" class="tab on">
   <span class="lbl" style="padding-top:4px">選擇練習模式</span>
-  <div class="hc" onclick="go('vocab')"><span style="font-size:28px">📚</span><div><div style="font-size:18px;font-weight:700">Vocab Drill</div><div style="font-size:12px;color:var(--txt3);margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
-  <div class="hc" onclick="go('grammar')"><span style="font-size:28px">⚡</span><div><div style="font-size:18px;font-weight:700">Grammar Blast</div><div style="font-size:12px;color:var(--txt3);margin-top:3px">B2-C1 文法 · 計分追蹤</div></div></div>
-  <div class="hc" onclick="go('sentence')"><span style="font-size:28px">✍️</span><div><div style="font-size:18px;font-weight:700">Sentence Forge</div><div style="font-size:12px;color:var(--txt3);margin-top:3px">句型 · 範例 · 為什麼這樣用</div></div></div>
-  <div class="hc" onclick="go('talk')"><span style="font-size:28px">💬</span><div><div style="font-size:18px;font-weight:700">Daily Talk</div><div style="font-size:12px;color:var(--txt3);margin-top:3px">日常對話 · Small talk · 美式生活</div></div></div>
-  <div class="hc" onclick="go('article')"><span style="font-size:28px">📰</span><div><div style="font-size:18px;font-weight:700">Article Room</div><div style="font-size:12px;color:var(--txt3);margin-top:3px">深度文章 · 字彙 · 中譯 · 研析</div></div></div>
-  <p style="text-align:center;font-size:11px;color:var(--txt3);padding-bottom:4px">groq · llama-3.3-70b-versatile</p>
+  <div class="hc" onclick="go('vocab')"><span style="font-size:30px">📚</span><div><div style="font-size:19px;font-weight:700">Vocab Drill</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">字卡翻轉 · 選擇題 · 填空</div></div></div>
+  <div class="hc" onclick="go('grammar')"><span style="font-size:30px">⚡</span><div><div style="font-size:19px;font-weight:700">Grammar Blast</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">B2-C1 文法 · 計分追蹤</div></div></div>
+  <div class="hc" onclick="go('sentence')"><span style="font-size:30px">✍️</span><div><div style="font-size:19px;font-weight:700">Sentence Forge</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">句型 · 範例 · 為什麼這樣用</div></div></div>
+  <div class="hc" onclick="go('talk')"><span style="font-size:30px">💬</span><div><div style="font-size:19px;font-weight:700">Daily Talk</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">日常對話 · Small talk · 美式生活</div></div></div>
+  <div class="hc" onclick="go('article')"><span style="font-size:30px">📰</span><div><div style="font-size:19px;font-weight:700">Article Room</div><div style="font-size:13px;color:var(--txt3);margin-top:3px">深度文章 · 字彙 · 中譯 · 研析</div></div></div>
+  <p style="text-align:center;font-size:12px;color:var(--txt3);padding-bottom:4px">groq · llama-3.3-70b-versatile</p>
 </div>
 
 <!-- VOCAB -->
 <div id="tab-vocab" class="tab">
-  <div class="mtabs">
-    <button class="mt on" onclick="vMode(0,this)">🃏 翻轉</button>
-    <button class="mt" onclick="vMode(1,this)">🎯 選擇</button>
-    <button class="mt" onclick="vMode(2,this)">✏️ 填空</button>
+  <!-- Sub-tab: Drill / Saved -->
+  <div class="stabs">
+    <button class="st on" onclick="vSubTab(0,this)">🎯 練習</button>
+    <button class="st" onclick="vSubTab(1,this)">📖 單字本</button>
   </div>
-  <button class="btn-p" id="vbtn" onclick="genVocab()">🎲 生成字彙組（5 張）</button>
-  <div id="verr"></div>
-  <div id="vcont" style="display:none;flex-direction:column;gap:12px">
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="prog-w"><div class="prog-f" id="vprog" style="width:20%"></div></div>
-      <span id="vidx" style="font-size:12px;color:var(--txt3)">1/5</span>
+
+  <!-- Drill Panel -->
+  <div id="vpanel-drill" style="display:flex;flex-direction:column;gap:14px">
+    <div class="mtabs">
+      <button class="mt on" onclick="vMode(0,this)">🃏 翻轉</button>
+      <button class="mt" onclick="vMode(1,this)">🎯 選擇</button>
+      <button class="mt" onclick="vMode(2,this)">✏️ 填空</button>
     </div>
-    <div id="vflip">
-      <div class="flip-sc" onclick="doFlip()">
-        <div class="flip-in" id="fin">
-          <div class="flip-f">
-            <p id="fpos" style="font-size:11px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px"></p>
-            <h2 id="fword" style="font-size:44px;font-weight:800;color:var(--gold);letter-spacing:-1px"></h2>
-            <p id="fzh" style="font-size:22px;font-weight:700;margin-top:12px;color:var(--txt)"></p>
-            <p style="font-size:11px;color:var(--txt3);margin-top:18px">點擊查看詳細解釋</p>
+    <button class="btn-p" id="vbtn" onclick="genVocab()">🎲 生成字彙組（5 張）</button>
+    <div id="verr"></div>
+    <div id="vcont" style="display:none;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="prog-w"><div class="prog-f" id="vprog" style="width:20%"></div></div>
+        <span id="vidx" style="font-size:13px;color:var(--txt3)">1/5</span>
+      </div>
+      <div id="vflip">
+        <div class="flip-sc" onclick="doFlip()">
+          <div class="flip-in" id="fin">
+            <div class="flip-f">
+              <p id="fpos" style="font-size:12px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px"></p>
+              <h2 id="fword" style="font-size:46px;font-weight:800;color:var(--gold);letter-spacing:-1px"></h2>
+              <p id="fzh" style="font-size:24px;font-weight:700;margin-top:12px;color:var(--txt)"></p>
+              <!-- Speak button on front of card -->
+              <div onclick="event.stopPropagation()" style="margin-top:18px;display:flex;gap:12px;align-items:center">
+                <button class="speak-btn" id="sp-word" onclick="speakWord()" title="發音">🔊</button>
+                <button class="speak-btn" id="sp-ex" onclick="speakEx()" title="例句發音" style="font-size:16px">💬</button>
+                <span style="font-size:12px;color:var(--txt3)">點卡片看詳解</span>
+              </div>
+            </div>
+            <div class="flip-f flip-b" style="gap:10px">
+              <div style="width:100%">
+                <span class="card-lbl">中文釋義</span>
+                <p id="bfzh" style="font-size:17px;font-weight:700;color:var(--txt);line-height:1.6;margin-bottom:4px"></p>
+                <p id="bfzh2" style="font-size:15px;color:var(--txt2);line-height:1.7"></p>
+              </div>
+              <div style="width:100%;border-top:1px solid var(--bd);padding-top:10px">
+                <span class="card-lbl">English Definition</span>
+                <p id="fdef" style="font-size:14px;color:var(--txt);line-height:1.7;margin-bottom:3px"></p>
+                <p id="fdef_zh" style="font-size:13px;color:var(--txt3);line-height:1.6"></p>
+              </div>
+              <div style="width:100%;border-top:1px solid var(--bd);padding-top:10px">
+                <span class="card-lbl">Example</span>
+                <p id="fex" style="font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:3px"></p>
+                <p id="fex_zh" style="font-size:13px;color:var(--txt3);line-height:1.6;margin-bottom:8px"></p>
+                <span class="card-lbl">記憶技巧</span>
+                <p id="ftip" style="font-size:14px;color:var(--txt2);line-height:1.6"></p>
+              </div>
+            </div>
           </div>
-          <div class="flip-f flip-b" style="gap:10px">
-            <div style="width:100%">
-              <span class="card-lbl">中文釋義</span>
-              <p id="bfzh" style="font-size:16px;font-weight:700;color:var(--txt);line-height:1.6;margin-bottom:4px"></p>
-              <p id="bfzh2" style="font-size:14px;color:var(--txt2);line-height:1.7"></p>
-            </div>
-            <div style="width:100%;border-top:1px solid var(--bd);padding-top:10px">
-              <span class="card-lbl">English Definition</span>
-              <p id="fdef" style="font-size:13px;color:var(--txt);line-height:1.7;margin-bottom:3px"></p>
-              <p id="fdef_zh" style="font-size:12px;color:var(--txt3);line-height:1.6"></p>
-            </div>
-            <div style="width:100%;border-top:1px solid var(--bd);padding-top:10px">
-              <span class="card-lbl">Example</span>
-              <p id="fex" style="font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:3px"></p>
-              <p id="fex_zh" style="font-size:12px;color:var(--txt3);line-height:1.6;margin-bottom:8px"></p>
-              <span class="card-lbl">記憶技巧</span>
-              <p id="ftip" style="font-size:13px;color:var(--txt2);line-height:1.6"></p>
-            </div>
+        </div>
+      </div>
+      <!-- MCQ -->
+      <div id="vmcq" style="display:none">
+        <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <p class="lbl" style="margin:0">選出正確單字</p>
+            <button class="speak-btn" style="width:40px;height:40px;font-size:18px" onclick="speakBlank()" title="聽發音">🔊</button>
+          </div>
+          <p id="mblank" style="font-size:17px;line-height:1.9;color:var(--txt)"></p>
+          <div id="mopts" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div id="mexp" style="display:none" class="acc fu">
+            <p id="mres" style="font-weight:700;color:var(--gold);margin-bottom:6px;font-size:16px"></p>
+            <p id="mdef" style="font-size:15px;color:var(--txt2);line-height:1.6"></p>
           </div>
         </div>
       </div>
-    </div>
-    <!-- MCQ -->
-    <div id="vmcq" style="display:none">
-      <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
-        <p class="lbl">選出正確單字</p>
-        <p id="mblank" style="font-size:16px;line-height:1.9;color:var(--txt)"></p>
-        <div id="mopts" style="display:flex;flex-direction:column;gap:8px"></div>
-        <div id="mexp" style="display:none" class="acc fu">
-          <p id="mres" style="font-weight:700;color:var(--gold);margin-bottom:6px;font-size:15px"></p>
-          <p id="mdef" style="font-size:14px;color:var(--txt2);line-height:1.6"></p>
+      <!-- Fill -->
+      <div id="vfill" style="display:none">
+        <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <p class="lbl">填入正確單字</p>
+          <div>
+            <p style="font-size:12px;color:var(--txt3);margin-bottom:4px">定義：</p>
+            <p id="filldef" style="font-size:15px;color:var(--txt2);line-height:1.6"></p>
+            <p id="fillzh" style="font-size:14px;color:var(--txt3);margin-top:4px"></p>
+          </div>
+          <p id="fillblank" style="font-size:17px;line-height:1.9;color:var(--txt)"></p>
+          <input type="text" id="fillinp" placeholder="輸入答案…" autocapitalize="none" autocomplete="off" autocorrect="off">
+          <div style="display:flex;gap:10px">
+            <button class="btn-g" style="flex:1" onclick="fillShow()">顯示答案</button>
+            <button class="btn-o" style="flex:1" onclick="fillCheck()">確認</button>
+          </div>
+          <div id="fillres" style="display:none" class="acc fu">
+            <p id="fillrt" style="font-weight:700;color:var(--gold);margin-bottom:6px;font-size:16px"></p>
+            <p id="fillex" style="font-size:14px;color:var(--txt2)"></p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Fill -->
-    <div id="vfill" style="display:none">
-      <div class="glass" style="padding:18px;display:flex;flex-direction:column;gap:12px">
-        <p class="lbl">填入正確單字</p>
-        <div>
-          <p style="font-size:11px;color:var(--txt3);margin-bottom:4px">定義：</p>
-          <p id="filldef" style="font-size:14px;color:var(--txt2);line-height:1.6"></p>
-          <p id="fillzh" style="font-size:13px;color:var(--txt3);margin-top:4px"></p>
-        </div>
-        <p id="fillblank" style="font-size:16px;line-height:1.9;color:var(--txt)"></p>
-        <input type="text" id="fillinp" placeholder="輸入答案…">
-        <div style="display:flex;gap:10px">
-          <button class="btn-g" style="flex:1" onclick="fillShow()">顯示答案</button>
-          <button class="btn-o" style="flex:1" onclick="fillCheck()">確認</button>
-        </div>
-        <div id="fillres" style="display:none" class="acc fu">
-          <p id="fillrt" style="font-weight:700;color:var(--gold);margin-bottom:6px;font-size:15px"></p>
-          <p id="fillex" style="font-size:13px;color:var(--txt2)"></p>
-        </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-g" style="flex:1" id="vprev" onclick="vNav(-1)">← Prev</button>
+        <button class="btn-g" style="flex:1;background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)" onclick="saveCurrentVocab()">💾 儲存</button>
+        <button class="btn-g" style="flex:1" id="vnext" onclick="vNav(1)">Next →</button>
       </div>
     </div>
-    <div style="display:flex;gap:10px">
-      <button class="btn-g" style="flex:1" id="vprev" onclick="vNav(-1)">← Prev</button>
-      <button class="btn-g" style="flex:1" id="vnext" onclick="vNav(1)">Next →</button>
+  </div>
+
+  <!-- Saved Vocab Panel -->
+  <div id="vpanel-saved" style="display:none;flex-direction:column;gap:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:15px;font-weight:700;color:var(--txt)">我的單字本</span>
+      <button onclick="clearVocabSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px">清除全部</button>
     </div>
+    <div id="vsaved-list"></div>
   </div>
 </div>
 
@@ -227,31 +269,31 @@ input:focus { border-color:var(--gold); }
     </select>
   </div>
   <div id="gsc" style="display:none" class="sc-b">
-    <span style="font-size:12px;color:var(--txt2)">本輪得分</span>
-    <span id="gsct" style="font-size:22px;font-weight:800;color:var(--gold)">0/0</span>
-    <span id="gpct" style="font-size:12px;color:var(--txt2)">0%</span>
+    <span style="font-size:13px;color:var(--txt2)">本輪得分</span>
+    <span id="gsct" style="font-size:24px;font-weight:800;color:var(--gold)">0/0</span>
+    <span id="gpct" style="font-size:13px;color:var(--txt2)">0%</span>
   </div>
   <button class="btn-p" id="gbtn" onclick="genGrammar()">⚡ 開始文法挑戰</button>
   <div id="gerr"></div>
   <div id="gdone" style="display:none" class="glass fu">
     <div style="padding:28px 20px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
-      <p id="gdicon" style="font-size:52px"></p>
-      <p id="gdsco" style="font-size:30px;font-weight:800;color:var(--gold)"></p>
-      <p id="gdmsg" style="color:var(--txt2);font-size:14px"></p>
+      <p id="gdicon" style="font-size:56px"></p>
+      <p id="gdsco" style="font-size:32px;font-weight:800;color:var(--gold)"></p>
+      <p id="gdmsg" style="color:var(--txt2);font-size:15px"></p>
       <button class="btn-o" style="margin-top:8px" onclick="gReset()">再試一輪</button>
     </div>
   </div>
   <div id="gq" style="display:none" class="glass fu">
     <div style="padding:18px;display:flex;flex-direction:column;gap:14px">
       <div style="display:flex;justify-content:space-between">
-        <span id="gtlbl" style="font-size:9px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase"></span>
-        <span id="gqidx" style="font-size:12px;color:var(--txt3)"></span>
+        <span id="gtlbl" style="font-size:10px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase"></span>
+        <span id="gqidx" style="font-size:13px;color:var(--txt3)"></span>
       </div>
-      <p id="gqtxt" style="font-size:17px;line-height:1.85;color:var(--txt)"></p>
+      <p id="gqtxt" style="font-size:18px;line-height:1.85;color:var(--txt)"></p>
       <div id="gopts" style="display:flex;flex-direction:column;gap:9px"></div>
       <div id="gexp" style="display:none" class="acc fu">
-        <p id="gres" style="font-weight:700;color:var(--gold);margin-bottom:8px;font-size:15px"></p>
-        <p id="gexpt" style="font-size:14px;color:var(--txt2);line-height:1.75"></p>
+        <p id="gres" style="font-weight:700;color:var(--gold);margin-bottom:8px;font-size:16px"></p>
+        <p id="gexpt" style="font-size:15px;color:var(--txt2);line-height:1.75"></p>
       </div>
       <button id="gnxt" style="display:none" class="btn-o" onclick="gNext()">下一題 →</button>
     </div>
@@ -283,24 +325,42 @@ input:focus { border-color:var(--gold); }
 
 <!-- DAILY TALK -->
 <div id="tab-talk" class="tab">
-  <div>
-    <span class="lbl">選擇對話情境</span>
-    <select id="ttopic">
-      <option value="general American small talk topics: weather, weekend plans, how are you, how was your day">💬 日常 Small Talk</option>
-      <option value="American workplace small talk: meetings, coffee break chat, lunch conversation, checking in with colleagues">🏢 職場對話</option>
-      <option value="social introductions and making friends in America: meeting new people, asking about hobbies, sharing experiences">🤝 認識新朋友</option>
-      <option value="shopping, dining out and ordering food in American restaurants and cafes">🍽️ 購物與餐廳</option>
-      <option value="phone calls, leaving voicemails, texting etiquette in American culture">📱 電話與訊息</option>
-      <option value="American sports culture small talk: following sports teams, game results, fantasy sports">🏈 美式運動話題</option>
-      <option value="talking about family, children, school, and American suburban life">👨‍👩‍👧 家庭與生活</option>
-      <option value="polite American expressions for disagreement, saying no, giving feedback without offending">🤝 有禮貌地拒絕與回應</option>
-      <option value="holiday greetings, celebrations, and American cultural events (Thanksgiving, Super Bowl, BBQ)">🎉 節慶與文化</option>
-      <option value="complimenting, expressing appreciation, and American-style encouragement phrases">👍 讚美與鼓勵用語</option>
-    </select>
+  <!-- Sub-tab: Drill / Saved -->
+  <div class="stabs">
+    <button class="st on" onclick="tSubTab(0,this)">💬 練習</button>
+    <button class="st" onclick="tSubTab(1,this)">📖 收藏</button>
   </div>
-  <button class="btn-p" id="tbtn" onclick="genTalk()">💬 生成對話練習</button>
-  <div id="terr"></div>
-  <div id="tcont" style="display:none;flex-direction:column;gap:12px"></div>
+
+  <!-- Talk drill panel -->
+  <div id="tpanel-drill" style="display:flex;flex-direction:column;gap:14px">
+    <div>
+      <span class="lbl">選擇對話情境</span>
+      <select id="ttopic">
+        <option value="general American small talk topics: weather, weekend plans, how are you, how was your day">💬 日常 Small Talk</option>
+        <option value="American workplace small talk: meetings, coffee break chat, lunch conversation, checking in with colleagues">🏢 職場對話</option>
+        <option value="social introductions and making friends in America: meeting new people, asking about hobbies, sharing experiences">🤝 認識新朋友</option>
+        <option value="shopping, dining out and ordering food in American restaurants and cafes">🍽️ 購物與餐廳</option>
+        <option value="phone calls, leaving voicemails, texting etiquette in American culture">📱 電話與訊息</option>
+        <option value="American sports culture small talk: following sports teams, game results, fantasy sports">🏈 美式運動話題</option>
+        <option value="talking about family, children, school, and American suburban life">👨‍👩‍👧 家庭與生活</option>
+        <option value="polite American expressions for disagreement, saying no, giving feedback without offending">🤝 有禮貌地拒絕與回應</option>
+        <option value="holiday greetings, celebrations, and American cultural events (Thanksgiving, Super Bowl, BBQ)">🎉 節慶與文化</option>
+        <option value="complimenting, expressing appreciation, and American-style encouragement phrases">👍 讚美與鼓勵用語</option>
+      </select>
+    </div>
+    <button class="btn-p" id="tbtn" onclick="genTalk()">💬 生成對話練習</button>
+    <div id="terr"></div>
+    <div id="tcont" style="display:none;flex-direction:column;gap:12px"></div>
+  </div>
+
+  <!-- Saved Talk Panel -->
+  <div id="tpanel-saved" style="display:none;flex-direction:column;gap:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:15px;font-weight:700;color:var(--txt)">我的對話收藏</span>
+      <button onclick="clearTalkSaved()" style="background:none;border:none;font-size:13px;color:var(--txt3);cursor:pointer;padding:4px 8px">清除全部</button>
+    </div>
+    <div id="tsaved-list"></div>
+  </div>
 </div>
 
 <!-- ARTICLE -->
@@ -355,13 +415,21 @@ input:focus { border-color:var(--gold); }
 <!-- Settings -->
 
 <div id="ov">
-  <h2 style="font-size:22px;font-weight:800;color:var(--gold)">⚙️ 設定</h2>
-  <p style="font-size:12px;color:var(--txt2)">模型：llama-3.3-70b-versatile（Groq）</p>
-  <p style="font-size:12px;color:var(--txt3);margin-bottom:8px">前往 console.groq.com → API Keys → 取得免費 Key</p>
+  <h2 style="font-size:23px;font-weight:800;color:var(--gold)">⚙️ 設定</h2>
+  <p style="font-size:13px;color:var(--txt2)">模型：llama-3.3-70b-versatile（Groq）</p>
+  <p style="font-size:13px;color:var(--txt3);margin-bottom:4px">前往 console.groq.com → API Keys → 取得免費 Key</p>
   <input type="password" id="kinp" placeholder="貼上 Groq API Key…">
-  <button class="btn-p" style="margin-top:10px" onclick="saveSets()">✅ 儲存</button>
-  <button onclick="hardReset()" style="width:100%;padding:13px;background:none;border:1px solid rgba(160,30,30,.35);color:#a01010;border-radius:12px;font-family:inherit;font-size:13px;cursor:pointer">♻️ 清除快取並重設</button>
-  <button onclick="closeOv()" style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;padding:8px;font-family:inherit">返回 Dojo</button>
+  <div style="background:var(--surf2);border:1px solid var(--bd);border-radius:12px;padding:14px">
+    <p style="font-size:12px;color:var(--txt3);margin-bottom:10px;letter-spacing:.04em">🔊 發音語速</p>
+    <div style="display:flex;gap:8px">
+      <button class="btn-g" style="flex:1;font-size:13px" onclick="setSpeechRate(0.7)" id="spd-slow">🐢 慢速</button>
+      <button class="btn-g" style="flex:1;font-size:13px;background:var(--gold-bg);border-color:var(--gold-bd);color:var(--gold)" onclick="setSpeechRate(0.9)" id="spd-med">📖 學習</button>
+      <button class="btn-g" style="flex:1;font-size:13px" onclick="setSpeechRate(1.0)" id="spd-fast">🗣️ 正常</button>
+    </div>
+  </div>
+  <button class="btn-p" style="margin-top:4px" onclick="saveSets()">✅ 儲存</button>
+  <button onclick="hardReset()" style="width:100%;padding:14px;background:none;border:1px solid rgba(160,30,30,.35);color:#a01010;border-radius:12px;font-family:inherit;font-size:14px;cursor:pointer;min-height:50px">♻️ 清除快取並重設</button>
+  <button onclick="closeOv()" style="background:none;border:none;color:var(--txt3);font-size:13px;cursor:pointer;padding:8px;font-family:inherit">返回 Dojo</button>
 </div>
 
 <script>
@@ -369,7 +437,56 @@ const MDL = "llama-3.3-70b-versatile";
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const ZH = "CRITICAL: All Chinese text must be Traditional Chinese (繁體中文). Never use Simplified Chinese. Return ONLY valid JSON with no markdown or code fences.";
 
-// Broad vocabulary domains — randomly picked each time to ensure variety
+// ── Speech ─────────────────────────────────────────────
+let speechRate = parseFloat(localStorage.getItem('speechRate') || '0.9');
+
+function setSpeechRate(r) {
+  speechRate = r;
+  localStorage.setItem('speechRate', r);
+  ['spd-slow','spd-med','spd-fast'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.background=''; el.style.borderColor=''; el.style.color=''; }
+  });
+  const map = {0.7:'spd-slow',0.9:'spd-med',1.0:'spd-fast'};
+  const active = document.getElementById(map[r]);
+  if (active) { active.style.background='var(--gold-bg)'; active.style.borderColor='var(--gold-bd)'; active.style.color='var(--gold)'; }
+}
+setSpeechRate(speechRate);
+
+function speak(text, btn) {
+  if (!window.speechSynthesis) { alert('此瀏覽器不支援語音功能'); return; }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'en-US';
+  utter.rate = speechRate;
+  utter.pitch = 1;
+  if (btn) {
+    btn.classList.add('speaking');
+    utter.onend = () => btn.classList.remove('speaking');
+    utter.onerror = () => btn.classList.remove('speaking');
+  }
+  window.speechSynthesis.speak(utter);
+}
+
+function speakWord() {
+  const idx = (VM === 1 || VM === 2) ? VQ[VI] : VI;
+  const c = VD[idx];
+  if (c?.word) speak(c.word, document.getElementById('sp-word'));
+}
+function speakEx() {
+  const idx = (VM === 1 || VM === 2) ? VQ[VI] : VI;
+  const c = VD[idx];
+  if (c?.ex) speak(c.ex, document.getElementById('sp-ex'));
+}
+function speakBlank() {
+  const idx = VQ[VI] !== undefined ? VQ[VI] : VI;
+  const c = VD[idx];
+  // Read blank sentence without the ___ for audio clarity, or read the word
+  if (c?.word) speak(c.word, event.currentTarget);
+}
+function speakText(text, btn) { speak(text, btn); }
+
+// ── Vocab domains ──────────────────────────────────────
 const VDOMAINS = [
   "business, economics, and finance",
   "environmental science, climate change, and sustainability",
@@ -425,12 +542,17 @@ async function api(prompt, sys) {
 // ── Settings ───────────────────────────────────────────
 document.getElementById('btn-set').onclick = () => {
   document.getElementById('kinp').value = localStorage.getItem('gk') || '';
+  setSpeechRate(speechRate);
   document.getElementById('ov').style.display = 'flex';
 };
 function closeOv() { document.getElementById('ov').style.display = 'none'; }
-function saveSets() { const v = document.getElementById('kinp').value.trim(); if (v) localStorage.setItem('gk', v); closeOv(); }
+function saveSets() {
+  const v = document.getElementById('kinp').value.trim();
+  if (v) localStorage.setItem('gk', v);
+  closeOv();
+}
 async function hardReset() {
-  if (!confirm("清除所有設定？")) return;
+  if (!confirm("清除所有設定與儲存資料？")) return;
   localStorage.clear();
   if ('caches' in window) { const ks = await caches.keys(); await Promise.all(ks.map(k => caches.delete(k))); }
   location.reload(true);
@@ -452,9 +574,95 @@ function ld(id, on, def) { const b = document.getElementById(id); if (!b) return
 function esc(s) { const d = document.createElement('div'); d.textContent = String(s || ''); return d.innerHTML; }
 function mk(tag, cls, html, style) { const e = document.createElement(tag); e.className = cls; e.innerHTML = html; if (style) e.style.cssText = style; return e; }
 function shuffle(arr) { return [...arr].sort(() => Math.random() - .5); }
+function fmtDate(ts) {
+  const d = new Date(ts);
+  return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+
+// ── VOCAB Sub-tabs ─────────────────────────────────────
+function vSubTab(idx, btn) {
+  document.querySelectorAll('#tab-vocab .st').forEach((b,i) => b.classList.toggle('on', i===idx));
+  document.getElementById('vpanel-drill').style.display = idx===0 ? 'flex' : 'none';
+  document.getElementById('vpanel-saved').style.display = idx===1 ? 'flex' : 'none';
+  if (idx===1) renderVSaved();
+}
+
+// ── VOCAB Storage ──────────────────────────────────────
+function getVocabSaved() { try { return JSON.parse(localStorage.getItem('vocab_saved') || '[]'); } catch { return []; } }
+function setVocabSaved(arr) { localStorage.setItem('vocab_saved', JSON.stringify(arr)); }
+
+function saveCurrentVocab() {
+  if (!VD.length) return;
+  const saved = getVocabSaved();
+  const entry = { ts: Date.now(), words: VD.map(w => ({ word:w.word, zh:w.zh, pos:w.pos, def:w.def, ex:w.ex, tip:w.tip })) };
+  saved.unshift(entry);
+  if (saved.length > 30) saved.length = 30; // 最多保留 30 組
+  setVocabSaved(saved);
+  // Brief visual feedback
+  const btn = event.currentTarget;
+  const orig = btn.textContent;
+  btn.textContent = '✅ 已儲存';
+  setTimeout(() => btn.textContent = orig, 1500);
+}
+
+function clearVocabSaved() {
+  if (!confirm('確定清除全部單字紀錄？')) return;
+  localStorage.removeItem('vocab_saved');
+  renderVSaved();
+}
+
+function renderVSaved() {
+  const list = document.getElementById('vsaved-list');
+  const saved = getVocabSaved();
+  if (!saved.length) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">📚</div><p>還沒有儲存的單字<br>練習後點「💾 儲存」保存這組字卡</p></div>`;
+    return;
+  }
+  list.innerHTML = '';
+  saved.forEach((entry, gi) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column;gap:8px';
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;justify-content:space-between;align-items:center';
+    header.innerHTML = `<span style="font-size:12px;color:var(--txt3)">📅 ${fmtDate(entry.ts)}</span><button class="saved-del" onclick="delVocabGroup(${gi})" style="position:static;opacity:.5">🗑️</button>`;
+    wrap.appendChild(header);
+    entry.words.forEach(w => {
+      const card = document.createElement('div');
+      card.className = 'saved-item';
+      card.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="display:flex;align-items:baseline;gap:10px">
+            <span style="font-size:20px;font-weight:800;color:var(--gold)">${esc(w.word)}</span>
+            <span style="font-size:13px;color:var(--txt3)">${esc(w.pos||'')}</span>
+          </div>
+          <button class="speak-btn" style="width:40px;height:40px;font-size:17px" onclick="speakText('${esc(w.word)}',this)">🔊</button>
+        </div>
+        <p style="font-size:16px;font-weight:600;color:var(--txt)">${esc(w.zh)}</p>
+        <p style="font-size:14px;color:var(--txt2);line-height:1.6">${esc(w.def||'')}</p>
+        ${w.ex ? `<p style="font-size:13px;color:var(--txt3);line-height:1.6;font-style:italic">"${esc(w.ex)}"
+          <button class="speak-btn" style="display:inline-flex;width:32px;height:32px;font-size:14px;vertical-align:middle;margin-left:4px" onclick="speakText('${w.ex.replace(/'/g,"\\'")}',this)">💬</button></p>` : ''}
+        ${w.tip ? `<p style="font-size:13px;color:var(--gold-l)">💡 ${esc(w.tip)}</p>` : ''}
+      `;
+      wrap.appendChild(card);
+    });
+    list.appendChild(wrap);
+    if (gi < saved.length - 1) {
+      const sep = document.createElement('hr');
+      sep.style.cssText = 'border:none;border-top:1px solid var(--bd);margin:4px 0';
+      list.appendChild(sep);
+    }
+  });
+}
+
+function delVocabGroup(idx) {
+  const saved = getVocabSaved();
+  saved.splice(idx, 1);
+  setVocabSaved(saved);
+  renderVSaved();
+}
 
 // ── VOCAB ──────────────────────────────────────────────
-let VD = [], VI = 0, VM = 0, VQ = []; // VQ = shuffled quiz order
+let VD = [], VI = 0, VM = 0, VQ = [];
 
 function vMode(m, btn) {
   VM = m;
@@ -507,11 +715,9 @@ function renderV() {
   document.getElementById('vmcq').style.display = VM === 1 ? 'block' : 'none';
   document.getElementById('vfill').style.display = VM === 2 ? 'block' : 'none';
 
-  // Front
   document.getElementById('fpos').textContent = c.pos || '';
   document.getElementById('fword').textContent = c.word || '';
   document.getElementById('fzh').textContent = c.zh || '';
-  // Back
   document.getElementById('bfzh').textContent = c.zh || '';
   document.getElementById('bfzh2').textContent = c.zh_def || '';
   document.getElementById('fdef').textContent = c.def || '';
@@ -521,7 +727,8 @@ function renderV() {
   document.getElementById('ftip').textContent = c.tip ? `💡 ${c.tip}` : '';
 
   if (VM === 1) {
-    document.getElementById('mblank').textContent = c.blank || (c.ex || '').replace(new RegExp('\\b' + (c.word || '') + '\\b', 'ig'), '___');
+    const mblankEl = document.getElementById('mblank');
+    mblankEl.textContent = c.blank || (c.ex || '').replace(new RegExp('\\b' + (c.word || '') + '\\b', 'ig'), '___');
     const opts = shuffle([...(c.distractors || []).slice(0, 3), c.word]);
     const con = document.getElementById('mopts'); con.innerHTML = '';
     document.getElementById('mexp').style.display = 'none';
@@ -534,6 +741,8 @@ function renderV() {
         document.getElementById('mres').textContent = o === c.word ? '✅ 正確！' : `❌ 答案：${c.word}`;
         document.getElementById('mdef').textContent = (c.zh_def || c.def || '') + (c.def_zh ? '　' + c.def_zh : '');
         document.getElementById('mexp').style.display = 'block';
+        // Auto-speak the correct word after answering
+        setTimeout(() => speak(c.word), 300);
       };
       con.appendChild(b);
     });
@@ -548,7 +757,13 @@ function renderV() {
 }
 function doFlip() { document.getElementById('fin').classList.toggle('on'); }
 function vNav(d) { VI = Math.max(0, Math.min(VD.length - 1, VI + d)); renderV(); }
-function fillShow() { const idx = (VM === 2) ? VQ[VI] : VI; const c = VD[idx]; document.getElementById('fillrt').textContent = `答案：${c.word}`; document.getElementById('fillex').textContent = c.ex ? `"${c.ex}"` : ''; document.getElementById('fillres').style.display = 'block'; }
+function fillShow() {
+  const idx = (VM === 2) ? VQ[VI] : VI; const c = VD[idx];
+  document.getElementById('fillrt').textContent = `答案：${c.word}`;
+  document.getElementById('fillex').textContent = c.ex ? `"${c.ex}"` : '';
+  document.getElementById('fillres').style.display = 'block';
+  speak(c.word);
+}
 function fillCheck() {
   const idx = (VM === 2) ? VQ[VI] : VI; const c = VD[idx];
   const v = document.getElementById('fillinp').value.trim().toLowerCase();
@@ -556,6 +771,7 @@ function fillCheck() {
   document.getElementById('fillrt').textContent = ok ? `✅ 正確！` : `❌ 答案：${c.word}`;
   document.getElementById('fillex').textContent = c.ex ? `"${c.ex}"` : '';
   document.getElementById('fillres').style.display = 'block';
+  setTimeout(() => speak(c.word), 200);
 }
 
 // ── GRAMMAR ────────────────────────────────────────────
@@ -651,27 +867,30 @@ blanks (array of 3 objects, each with:
 
 function renderSent(d, c) {
   c.appendChild(mk('div', 'glass acc fu',
-    `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px">${esc(d.pattern || '')}</p>` +
-    `<p style="font-size:15px;line-height:1.8;color:var(--txt)">${esc(d.rule || '')}</p>` +
-    `<p style="font-size:14px;color:var(--txt2);margin-top:8px;line-height:1.75;border-top:1px solid var(--bd);padding-top:8px">${esc(d.rule_zh || '')}</p>`
+    `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px">${esc(d.pattern || '')}</p>` +
+    `<p style="font-size:16px;line-height:1.8;color:var(--txt)">${esc(d.rule || '')}</p>` +
+    `<p style="font-size:15px;color:var(--txt2);margin-top:8px;line-height:1.75;border-top:1px solid var(--bd);padding-top:8px">${esc(d.rule_zh || '')}</p>`
   ));
   if (d.examples?.length) {
-    let h = `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">範例句</p>`;
-    d.examples.forEach((e, i) => h += `<div style="display:flex;gap:10px;margin-bottom:12px"><span style="color:var(--gold);font-size:12px;font-weight:700;min-width:16px;margin-top:2px">${i + 1}.</span><p style="font-size:15px;line-height:1.8;color:var(--txt)">${esc(e)}</p></div>`);
+    let h = `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">範例句</p>`;
+    d.examples.forEach((e, i) => {
+      const safeE = e.replace(/'/g, "\\'");
+      h += `<div style="display:flex;gap:10px;margin-bottom:12px;align-items:flex-start"><span style="color:var(--gold);font-size:13px;font-weight:700;min-width:18px;margin-top:3px">${i + 1}.</span><div style="flex:1"><p style="font-size:16px;line-height:1.8;color:var(--txt)">${esc(e)}</p></div><button class="speak-btn" style="width:38px;height:38px;font-size:16px;flex-shrink:0" onclick="speakText('${safeE}',this)">🔊</button></div>`;
+    });
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
   }
   if (d.blanks?.length) {
-    let h = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase">填空練習（附解析）</p></div>`;
+    let h = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase">填空練習（附解析）</p></div>`;
     d.blanks.forEach((b, bi) => {
       h += `<div style="margin-bottom:18px;padding-bottom:18px;${bi < d.blanks.length-1 ? 'border-bottom:1px solid var(--bd)' : ''}">` +
-        `<p style="font-size:15px;line-height:1.8;color:var(--txt);margin-bottom:8px">${esc(b.sentence)}</p>` +
-        `<input type="text" placeholder="填入答案…" style="width:100%;padding:10px 13px;background:var(--surf2);border:1px solid var(--bd);border-radius:10px;color:var(--txt);font-family:inherit;font-size:14px;outline:none;margin-bottom:8px;">` +
+        `<p style="font-size:16px;line-height:1.8;color:var(--txt);margin-bottom:8px">${esc(b.sentence)}</p>` +
+        `<input type="text" placeholder="填入答案…" autocapitalize="none" autocomplete="off" autocorrect="off" style="width:100%;padding:12px 14px;background:var(--surf2);border:1px solid var(--bd);border-radius:10px;color:var(--txt);font-family:inherit;font-size:15px;outline:none;margin-bottom:8px;min-height:48px;">` +
         `<div class="ans-r" style="display:none">` +
-        `<p style="font-size:14px;color:var(--gold);font-weight:700;margin-bottom:4px">✓ ${esc(b.answer)}<span style="font-size:13px;color:var(--txt3);font-weight:400;margin-left:8px">${esc(b.answer_zh || '')}</span></p>` +
-        `<p style="font-size:13px;color:var(--txt2);line-height:1.7;background:var(--surf2);padding:8px 12px;border-radius:8px">💡 ${esc(b.why || '')}</p>` +
+        `<p style="font-size:15px;color:var(--gold);font-weight:700;margin-bottom:4px">✓ ${esc(b.answer)}<span style="font-size:14px;color:var(--txt3);font-weight:400;margin-left:8px">${esc(b.answer_zh || '')}</span></p>` +
+        `<p style="font-size:14px;color:var(--txt2);line-height:1.7;background:var(--surf2);padding:9px 13px;border-radius:8px">💡 ${esc(b.why || '')}</p>` +
         `</div></div>`;
     });
-    h += `<button onclick="toggleAns(this)" style="width:100%;padding:10px;font-size:13px;border:1px solid var(--gold-bd);color:var(--gold);background:none;border-radius:9px;cursor:pointer;font-family:inherit">顯示全部答案與解析</button>`;
+    h += `<button onclick="toggleAns(this)" style="width:100%;padding:12px;font-size:14px;border:1px solid var(--gold-bd);color:var(--gold);background:none;border-radius:9px;cursor:pointer;font-family:inherit;min-height:48px">顯示全部答案與解析</button>`;
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
   }
   c.style.display = 'flex';
@@ -680,6 +899,79 @@ function toggleAns(btn) {
   const showing = btn.textContent === '隱藏答案與解析';
   btn.closest('.glass').querySelectorAll('.ans-r').forEach(e => e.style.display = showing ? 'none' : 'block');
   btn.textContent = showing ? '顯示全部答案與解析' : '隱藏答案與解析';
+}
+
+// ── DAILY TALK Sub-tabs ────────────────────────────────
+function tSubTab(idx, btn) {
+  document.querySelectorAll('#tab-talk .st').forEach((b,i) => b.classList.toggle('on', i===idx));
+  document.getElementById('tpanel-drill').style.display = idx===0 ? 'flex' : 'none';
+  document.getElementById('tpanel-saved').style.display = idx===1 ? 'flex' : 'none';
+  if (idx===1) renderTSaved();
+}
+
+// ── DAILY TALK Storage ─────────────────────────────────
+function getTalkSaved() { try { return JSON.parse(localStorage.getItem('talk_saved') || '[]'); } catch { return []; } }
+function setTalkSaved(arr) { localStorage.setItem('talk_saved', JSON.stringify(arr)); }
+
+function saveTalkEntry(data) {
+  const saved = getTalkSaved();
+  saved.unshift({ ts: Date.now(), topic: data.topic || '', phrases: data.phrases || [], tips: data.tips || [] });
+  if (saved.length > 20) saved.length = 20;
+  setTalkSaved(saved);
+}
+
+function clearTalkSaved() {
+  if (!confirm('確定清除全部對話收藏？')) return;
+  localStorage.removeItem('talk_saved');
+  renderTSaved();
+}
+
+function renderTSaved() {
+  const list = document.getElementById('tsaved-list');
+  const saved = getTalkSaved();
+  if (!saved.length) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">💬</div><p>還沒有收藏的對話<br>生成後點「💾 收藏」保存這組表達</p></div>`;
+    return;
+  }
+  list.innerHTML = '';
+  saved.forEach((entry, gi) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'background:var(--surf);border:1px solid var(--bd);border-radius:14px;overflow:hidden';
+    const hdr = document.createElement('div');
+    hdr.style.cssText = 'padding:14px 16px;background:var(--gold-bg);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center';
+    hdr.innerHTML = `<div><p style="font-size:15px;font-weight:700;color:var(--txt)">${esc(entry.topic)}</p><p class="saved-date" style="margin-top:3px">📅 ${fmtDate(entry.ts)}</p></div><button style="background:none;border:none;color:var(--txt3);font-size:18px;cursor:pointer;padding:4px 6px" onclick="delTalkGroup(${gi})">🗑️</button>`;
+    wrap.appendChild(hdr);
+    const body = document.createElement('div');
+    body.style.cssText = 'padding:14px 16px;display:flex;flex-direction:column;gap:12px';
+    (entry.phrases || []).forEach((p, pi) => {
+      const safeEn = (p.en||'').replace(/'/g,"\\'");
+      const item = document.createElement('div');
+      item.style.cssText = pi>0 ? 'border-top:1px solid var(--bd);padding-top:12px' : '';
+      item.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <p style="font-size:16px;font-weight:600;color:var(--txt);line-height:1.65;flex:1">${esc(p.en)}</p>
+          <button class="speak-btn" style="width:38px;height:38px;font-size:16px;flex-shrink:0" onclick="speakText('${safeEn}',this)">🔊</button>
+        </div>
+        <p style="font-size:15px;color:var(--gold-l);margin-top:4px">${esc(p.zh)}</p>
+        ${p.note ? `<p style="font-size:13px;color:var(--txt3);line-height:1.65;background:var(--surf2);padding:7px 11px;border-radius:8px;margin-top:5px">📌 ${esc(p.note)}</p>` : ''}
+      `;
+      body.appendChild(item);
+    });
+    wrap.appendChild(body);
+    list.appendChild(wrap);
+    if (gi < saved.length - 1) {
+      const sep = document.createElement('div');
+      sep.style.cssText = 'height:12px';
+      list.appendChild(sep);
+    }
+  });
+}
+
+function delTalkGroup(idx) {
+  const saved = getTalkSaved();
+  saved.splice(idx, 1);
+  setTalkSaved(saved);
+  renderTSaved();
 }
 
 // ── DAILY TALK ─────────────────────────────────────────
@@ -699,31 +991,47 @@ phrases (array of 8 objects, each a natural English phrase or short exchange com
 ),
 tips (array of 3 繁體中文文化小提示，說明美國人在這個情境的習慣和注意事項).`
     );
-    renderTalk(r, c);
+    renderTalk(r, c, true);
   } catch (e) { err('terr', e.message); }
   ld('tbtn', false, '💬 生成對話練習');
 }
 
-function renderTalk(d, c) {
+function renderTalk(d, c, showSave) {
   c.appendChild(mk('div', 'glass acc fu',
-    `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px">情境說明</p>` +
-    `<p style="font-size:15px;color:var(--txt);line-height:1.7">${esc(d.topic || '')}</p>`
+    `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px">情境說明</p>` +
+    `<p style="font-size:16px;color:var(--txt);line-height:1.7">${esc(d.topic || '')}</p>`
   ));
   if (d.phrases?.length) {
-    let h = `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px">常用表達</p>`;
+    let h = `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:14px">常用表達</p>`;
     d.phrases.forEach((p, i) => {
+      const safeEn = (p.en||'').replace(/'/g,"\\'");
       h += `<div style="margin-bottom:16px;${i > 0 ? 'border-top:1px solid var(--bd);padding-top:16px' : ''}">` +
-        `<p style="font-size:16px;font-weight:600;color:var(--txt);line-height:1.65;margin-bottom:5px">${esc(p.en)}</p>` +
-        `<p style="font-size:14px;color:var(--gold-l);margin-bottom:5px">${esc(p.zh)}</p>` +
-        `<p style="font-size:13px;color:var(--txt3);line-height:1.65;background:var(--surf2);padding:7px 11px;border-radius:8px">📌 ${esc(p.note)}</p>` +
+        `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">` +
+        `<p style="font-size:17px;font-weight:600;color:var(--txt);line-height:1.65;flex:1">${esc(p.en)}</p>` +
+        `<button class="speak-btn" style="width:40px;height:40px;font-size:18px;flex-shrink:0" onclick="speakText('${safeEn}',this)">🔊</button></div>` +
+        `<p style="font-size:15px;color:var(--gold-l);margin-bottom:5px;margin-top:4px">${esc(p.zh)}</p>` +
+        `<p style="font-size:14px;color:var(--txt3);line-height:1.65;background:var(--surf2);padding:8px 12px;border-radius:8px">📌 ${esc(p.note)}</p>` +
         `</div>`;
     });
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
   }
   if (d.tips?.length) {
-    let h = `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">🇺🇸 文化小提示</p>`;
-    d.tips.forEach((t, i) => h += `<div style="display:flex;gap:10px;margin-bottom:10px"><span style="color:var(--gold);font-weight:700;min-width:18px">${i + 1}.</span><p style="font-size:14px;color:var(--txt2);line-height:1.7">${esc(t)}</p></div>`);
+    let h = `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">🇺🇸 文化小提示</p>`;
+    d.tips.forEach((t, i) => h += `<div style="display:flex;gap:10px;margin-bottom:10px"><span style="color:var(--gold);font-weight:700;min-width:20px">${i + 1}.</span><p style="font-size:15px;color:var(--txt2);line-height:1.7">${esc(t)}</p></div>`);
     c.appendChild(mk('div', 'glass fu', h, 'padding:18px'));
+  }
+  // Save button
+  if (showSave) {
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'btn-o';
+    saveBtn.textContent = '💾 收藏這組對話';
+    saveBtn.onclick = function() {
+      saveTalkEntry(d);
+      this.textContent = '✅ 已收藏';
+      this.disabled = true;
+      setTimeout(() => { this.textContent = '💾 收藏這組對話'; this.disabled = false; }, 2000);
+    };
+    c.appendChild(saveBtn);
   }
   c.style.display = 'flex';
 }
@@ -755,8 +1063,8 @@ analysis (object with EXACTLY these 4 keys — each value must follow this forma
 
 function renderArt(d, c) {
   c.appendChild(mk('div', 'glass fu',
-    `<h2 style="font-size:19px;font-weight:800;color:var(--gold);margin-bottom:16px;line-height:1.4">${esc(d.title || '')}</h2>` +
-    `<div style="font-size:16px;line-height:2;color:var(--txt);white-space:pre-wrap">${esc(d.content || '')}</div>`,
+    `<h2 style="font-size:20px;font-weight:800;color:var(--gold);margin-bottom:16px;line-height:1.4">${esc(d.title || '')}</h2>` +
+    `<div style="font-size:17px;line-height:2;color:var(--txt);white-space:pre-wrap">${esc(d.content || '')}</div>`,
     'padding:20px'
   ));
 
@@ -764,20 +1072,26 @@ function renderArt(d, c) {
   c.appendChild(togBtn('📚 展開關鍵字彙', '▲ 收起關鍵字彙', 'art-v'));
   let vh = '';
   (d.vocab || []).forEach((v, i) => {
-    vh += `<div style="padding:12px 0;${i ? 'border-top:1px solid var(--bd)' : ''}">` +
-      `<div style="display:flex;gap:8px;align-items:baseline;margin-bottom:5px">` +
-      `<span style="font-weight:700;color:var(--gold);font-size:16px">${esc(v.word)}</span>` +
-      `<span style="font-size:14px;color:var(--txt2)">${esc(v.zh)}</span></div>` +
-      `<p style="font-size:14px;color:var(--txt2);line-height:1.65">${esc(v.def)}</p>` +
-      `<p style="font-size:13px;color:var(--txt3);margin-top:4px">"${esc(v.ex)}"</p></div>`;
+    const safeWord = (v.word||'').replace(/'/g,"\\'");
+    const safeEx = (v.ex||'').replace(/'/g,"\\'");
+    vh += `<div style="padding:13px 0;${i ? 'border-top:1px solid var(--bd)' : ''}">` +
+      `<div style="display:flex;gap:10px;align-items:center;margin-bottom:6px;justify-content:space-between">` +
+      `<div style="display:flex;gap:10px;align-items:baseline">` +
+      `<span style="font-weight:700;color:var(--gold);font-size:18px">${esc(v.word)}</span>` +
+      `<span style="font-size:15px;color:var(--txt2)">${esc(v.zh)}</span></div>` +
+      `<button class="speak-btn" style="width:38px;height:38px;font-size:16px" onclick="speakText('${safeWord}',this)">🔊</button></div>` +
+      `<p style="font-size:15px;color:var(--txt2);line-height:1.65">${esc(v.def)}</p>` +
+      `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-top:5px">` +
+      `<p style="font-size:14px;color:var(--txt3);line-height:1.6;flex:1">"${esc(v.ex)}"</p>` +
+      `<button class="speak-btn" style="width:34px;height:34px;font-size:14px;flex-shrink:0" onclick="speakText('${safeEx}',this)">💬</button></div></div>`;
   });
   const vd = mk('div', 'glass fu', vh, 'padding:16px 18px;display:none'); vd.id = 'art-v'; c.appendChild(vd);
 
   // Translation
   c.appendChild(togBtn('🔍 展開中文翻譯', '▲ 收起中文翻譯', 'art-t'));
   const td = mk('div', 'glass fu',
-    `<p style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">繁體中文翻譯</p>` +
-    `<p style="font-size:15px;color:var(--txt2);line-height:2.1;white-space:pre-wrap">${esc(d.translation || '（無翻譯內容，請重試）')}</p>`,
+    `<p style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px">繁體中文翻譯</p>` +
+    `<p style="font-size:16px;color:var(--txt2);line-height:2.1;white-space:pre-wrap">${esc(d.translation || '（無翻譯內容，請重試）')}</p>`,
     'padding:18px;display:none'
   ); td.id = 'art-t'; c.appendChild(td);
 
@@ -789,20 +1103,20 @@ function renderArt(d, c) {
     labels.forEach(([k, l]) => {
       if (!d.analysis[k]) return;
       const raw = String(d.analysis[k]);
-      // Try to split on → or 「 to separate quote from explanation
       const arrowIdx = raw.indexOf('→');
       let engPart = '', zhPart = raw;
       if (arrowIdx > -1) {
         engPart = raw.slice(0, arrowIdx).trim();
         zhPart = raw.slice(arrowIdx + 1).trim();
       } else {
-        // Try to find quoted English
         const qMatch = raw.match(/^[""](.+?)[""](.*)$/s);
         if (qMatch) { engPart = `"${qMatch[1]}"`; zhPart = qMatch[2].trim(); }
       }
+      const safeEng = engPart.replace(/['"]/g,'').replace(/[`]/g,'');
+      const speakBtn = engPart ? `<button class="speak-btn" style="width:36px;height:36px;font-size:15px;margin-top:4px" onclick="speakText('${safeEng}',this)">🔊</button>` : '';
       const html =
-        `<p style="font-size:9px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px">${l}</p>` +
-        (engPart ? `<div class="eng-quote">${esc(engPart)}</div>` : '') +
+        `<p style="font-size:10px;color:var(--txt3);letter-spacing:.3em;text-transform:uppercase;margin-bottom:8px">${l}</p>` +
+        (engPart ? `<div class="eng-quote" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px"><span style="flex:1">${esc(engPart)}</span>${speakBtn}</div>` : '') +
         `<p class="zh-note">${esc(zhPart)}</p>`;
       ad.appendChild(mk('div', 'glass fu', html, 'padding:18px'));
     });
