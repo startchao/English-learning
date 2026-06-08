@@ -2,14 +2,19 @@
 
 A personal repository for English study, practice, and learning materials.
 
-This project is used as a working space for building English ability through regular practice, topic-based study, and long-term review.
+This project is kept as a supporting English-learning workspace for materials, notes, and study structure.
+
+## Status
+
+- Current state: incomplete / supporting repository
+- Maintenance: not actively updated
+- Note: the main ongoing English-learning work may be handled in other repositories
 
 ## Purpose
 
 - Keep English learning materials organized
-- Support daily or repeated study
-- Build a practical study workflow over time
-- Provide a place for experiments in learning structure and content
+- Preserve study notes and past learning structure
+- Support occasional review or future reuse
 
 ## Learning Areas
 
@@ -19,15 +24,7 @@ This project is used as a working space for building English ability through reg
 - Review and repetition
 - Personal study notes
 
-## Project Direction
-
-This repository is maintained as a practical learning workspace.
-It may overlap with other English-learning projects, but it remains useful as a dedicated place for study materials, experiments, or archived learning structure.
-
-## Current Status
-
-This repository is a personal learning project and may continue to evolve over time.
-
 ## Notes
 
-If the learning workflow becomes more consolidated in another repository, this project may later be archived or kept as a supporting workspace.
+This repository is being kept for reference and possible future use.
+It is not currently a main active project, and it may later be archived if the workflow is fully consolidated elsewhere.
